@@ -11,3 +11,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /trab1/Library/nbproject/private/
+/ISTrab1_library/nbproject/private/
+/trab1/Library/build/
+/trab1/Library/dist/

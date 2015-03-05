@@ -7,10 +7,12 @@ package Hardware;
 
 /**
  *
- * @author João BArata Oliveira
+ * @author João Barata Oliveira
  * @author Pedro Martins
  */
 public class windmill {
-    
-    
+    native static float energyProduction();
+    native static int turnOn(int state);
+    native static int isOn();
+    native static String error(); 
 }
