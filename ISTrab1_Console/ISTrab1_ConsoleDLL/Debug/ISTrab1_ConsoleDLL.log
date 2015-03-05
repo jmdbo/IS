@@ -1,4 +1,8 @@
-﻿Build started 05/03/2015 12:33:20.
+﻿Build started 05/03/2015 14:29:28.
+     1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_ConsoleDLL\ISTrab1_ConsoleDLL.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         ISTrab1_ConsoleDLL.vcxproj -> C:\dev\IS\ISTrab1_Console\Debug\ISTrab1_ConsoleDLL.exe
+     1>Done Building Project "C:\dev\IS\ISTrab1_Console\ISTrab1_ConsoleDLL\ISTrab1_ConsoleDLL.vcxproj" (Build target(s)).
 
 Build succeeded.
 

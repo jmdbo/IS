@@ -1,5 +1,10 @@
-﻿Build started 05/03/2015 12:33:21.
+﻿Build started 05/03/2015 12:49:37.
+     1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_Console\ISTrab1_Console.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ISTrab1_ConsoleTest.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>Link:
+         ISTrab1_Console.vcxproj -> C:\dev\IS\ISTrab1_Console\Debug\ISTrab1_Console.exe
+     1>Done Building Project "C:\dev\IS\ISTrab1_Console\ISTrab1_Console\ISTrab1_Console.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.01
+Time Elapsed 00:00:00.04
