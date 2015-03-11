@@ -15,4 +15,10 @@ public class windmill {
     native static int turnOn(int state);
     native static int isOn();
     native static String error(); 
+    
+    public static void main(String[] args){
+        System.out.printf("Ola!");
+    }
 }
+
+
