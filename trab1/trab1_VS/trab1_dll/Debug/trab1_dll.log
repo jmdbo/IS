@@ -1,0 +1,15 @@
+﻿Build started 06/03/2015 22:09:35.
+     1>Project "C:\dev\IS\trab1\trab1_VS\trab1_dll\trab1_dll.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files\Java\jdk1.8.0_40\include" /I"C:\Program Files\Java\jdk1.8.0_40\include\win32" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TRAB1_DLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Hardware_windmill.c
+         Hardware_windmill.c
+     1>c:\dev\is\trab1\trab1_vs\trab1_dll\hardware_windmill.c(36): warning C4716: 'Java_Hardware_windmill_error' : must return a value
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\dev\IS\trab1\trab1_VS\Debug\trab1_dll.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\dev\IS\trab1\trab1_VS\Debug\trab1_dll.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\dev\IS\trab1\trab1_VS\Debug\trab1_dll.lib" /MACHINE:X86 /DLL Debug\Hardware_windmill.obj
+            Creating library C:\dev\IS\trab1\trab1_VS\Debug\trab1_dll.lib and object C:\dev\IS\trab1\trab1_VS\Debug\trab1_dll.exp
+         trab1_dll.vcxproj -> C:\dev\IS\trab1\trab1_VS\Debug\trab1_dll.dll
+     1>Done Building Project "C:\dev\IS\trab1\trab1_VS\trab1_dll\trab1_dll.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.13
