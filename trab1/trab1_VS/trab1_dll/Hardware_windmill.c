@@ -1,4 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Hardware_windmill.h"
+#include <stdlib.h>
+#include <string.h>
 
 JNIEXPORT jfloat JNICALL Java_Hardware_windmill_energyProduction(JNIEnv * var, jclass var2){
 	jfloat test = 3.0;
@@ -32,5 +35,6 @@ JNIEXPORT jint JNICALL Java_Hardware_windmill_isOn
 */
 JNIEXPORT jstring JNICALL Java_Hardware_windmill_error
 (JNIEnv *var, jclass var2){
-
+	jstring teste3 = (*var)->NewStringUTF(var, "teste");
+	return teste3;
 }
