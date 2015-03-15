@@ -1,19 +1,28 @@
-#include"hardware.h"
+#include "hardware.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+int state=0;
 
 _declspec(dllexport)float energyProduction(){
 	float r = (float)(rand()) / (float)(RAND_MAX);
 	return r;
 }
 
-_declspec(dllexport)int turnOn(int state){
-	return state;
+_declspec(dllexport)int turnOn(int Fstate){
+	if (state == Fstate){
+		return 0;
+	}
+	else if (((Fstate == 0) || (Fstate == 1))){
+		state = Fstate;
+		return 1;
+	}
+	else return 0;
 }
 
 _declspec(dllexport)int isOn(){
-	return rand();
+	return state;
 }
 
 _declspec(dllexport)char* error(){

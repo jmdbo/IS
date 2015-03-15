@@ -11,15 +11,13 @@ package Hardware;
  * @author Pedro Martins
  */
 public class windmill {
-    static{System.load("C:\\dev\\IS\\trab1\\trab1_VS\\x64\\Debug\\trab1_dll.dll");}
+    static{System.load("C:\\dev\\IS\\ISTrab1_Console\\x64\\Debug\\ISTrab1_DLL.dll");}
+    static{System.load("C:\\dev\\IS\\ISTrab1_Console\\x64\\Debug\\ISTrab1_JNI.dll");}
     native static float energyProduction();
     native static int turnOn(int state);
     native static int isOn();
-    native static String error(); 
+    native static String error();
     
-    public static void main(String[] args){
-        System.out.println(error());
-    }
 }
 
 

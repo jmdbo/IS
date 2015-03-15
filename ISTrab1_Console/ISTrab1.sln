@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ISTrab1_DLL", "ISTrab1_DLL\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ISTrab1_ConsoleDLL", "ISTrab1_ConsoleDLL\ISTrab1_ConsoleDLL.vcxproj", "{3EF34FAD-65D0-441E-AED8-7A9C36E1FFEA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ISTrab1_JNI", "ISTrab1_JNI\ISTrab1_JNI.vcxproj", "{871C86B9-3792-490B-B41C-F129C64F118F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -41,6 +43,13 @@ Global
 		{3EF34FAD-65D0-441E-AED8-7A9C36E1FFEA}.Release|Win32.Build.0 = Release|Win32
 		{3EF34FAD-65D0-441E-AED8-7A9C36E1FFEA}.Release|x64.ActiveCfg = Release|x64
 		{3EF34FAD-65D0-441E-AED8-7A9C36E1FFEA}.Release|x64.Build.0 = Release|x64
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Debug|Win32.Build.0 = Debug|Win32
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Debug|x64.ActiveCfg = Debug|x64
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Debug|x64.Build.0 = Debug|x64
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Release|Win32.ActiveCfg = Release|Win32
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Release|Win32.Build.0 = Release|Win32
+		{871C86B9-3792-490B-B41C-F129C64F118F}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

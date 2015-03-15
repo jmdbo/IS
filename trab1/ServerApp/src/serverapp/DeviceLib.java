@@ -5,18 +5,23 @@
 package serverapp;
 
 import java.util.StringTokenizer;
+import Hardware.windmill;
 
 /**
  *
  * @author André
  */
 public class DeviceLib {
+    
+    private windmill lib;
 
     public DeviceLib() {
         //AULA 3 - inicializar as lib
+        lib = new windmill();
     }
 
     protected String callHardware(String content) {
+        
         String reply = null;
         StringTokenizer st = new StringTokenizer(content, utilities.constants.token);
         String operation = st.nextToken();
