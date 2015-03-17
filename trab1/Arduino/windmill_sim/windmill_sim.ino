@@ -13,6 +13,7 @@
 const int buttonPin=2;     //Digital Pin 2. 
 const int buttonPin1=3;    //Digital Pin 3. 
 const int ledPin=4;        //Digital Pin 4.
+const int ledPin1=13;      //Digital Pin 13.
 const int potPin=A0;       //Analog Pin 0.
 
 //Variables
@@ -30,13 +31,14 @@ void clean_buffer(){
 
 //clear error buiffer
 void clean_errorbuffer(){
-  memeset(errorbuffer,0,sizeof(errorbuffer));
+  memset(errorbuffer,0,sizeof(errorbuffer));
 }
 
 //initialization of PinMode
 int init_pinMode(){
   pinMode(buttonPin,INPUT);
   pinMode(buttonPin1,INPUT);
+  pinMode(ledPin,OUTPUT);
   pinMode(ledPin,OUTPUT);
 
   return 0;  
@@ -75,7 +77,7 @@ void loop(){
   buttonState=digitalRead(buttonPin);
   buttonState1=digitalRead(buttonPin1);
   sensorValue=analogRead(potPin);
-
+  
   //read UART COM
   if(Serial.available()>0){
     Serial.readBytesUntil('/0',buffer,10);  
@@ -114,13 +116,17 @@ void loop(){
     Serial.print("error: ");
     Serial.println(errorbuffer);
     clean_buffer(); 
+    digitalWrite(ledPin1,LOW);
   }
 
   if(buttonState==HIGH){
     strcpy(errorbuffer,"error-1");
+    digitalWrite(ledPin1,HIGH);
   }
 
-  if(buttonState1==HIGH)
+  if(buttonState1==HIGH){
     clean_errorbuffer();
+    digitalWrite(ledPin1,LOW);
+  }
 }
 
