@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="hardware.c" />
+    <ClCompile Include="hardware.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hardware.h" />

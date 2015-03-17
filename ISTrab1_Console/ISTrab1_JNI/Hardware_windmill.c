@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-JNIEXPORT jfloat JNICALL Java_Hardware_windmill_energyProduction(JNIEnv * var, jclass var2){
+JNIEXPORT jfloat JNICALL Java_Hardware_windmill_energyProduction(JNIEnv * env, jclass javaClass){
 	jfloat energy = energyProduction();
 	return energy;
 }
@@ -15,8 +15,8 @@ JNIEXPORT jfloat JNICALL Java_Hardware_windmill_energyProduction(JNIEnv * var, j
 * Signature: (I)I
 */
 JNIEXPORT jint JNICALL Java_Hardware_windmill_turnOn
-(JNIEnv *var, jclass var2, jint var3){
-	return 1;
+(JNIEnv *env, jclass javaClass, jint state){
+	return turnOn(state);
 }
 
 /*
@@ -25,8 +25,8 @@ JNIEXPORT jint JNICALL Java_Hardware_windmill_turnOn
 * Signature: ()I
 */
 JNIEXPORT jint JNICALL Java_Hardware_windmill_isOn
-(JNIEnv *var, jclass var2){
-	return 2;
+(JNIEnv *env, jclass javaClass){
+	return isOn();
 }
 
 /*
@@ -36,6 +36,7 @@ JNIEXPORT jint JNICALL Java_Hardware_windmill_isOn
 */
 JNIEXPORT jstring JNICALL Java_Hardware_windmill_error
 (JNIEnv *var, jclass var2){
-	jstring teste3 = (*var)->NewStringUTF(var, "teste");
-	return teste3;
+	char* errorVal = error();
+	jstring errorJava = (*var)->NewStringUTF(var, errorVal);
+	return errorJava;
 }

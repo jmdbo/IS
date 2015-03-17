@@ -26,7 +26,7 @@ _declspec(dllexport)int isOn(){
 }
 
 _declspec(dllexport)char* error(){
-	char* teste = malloc(20);
+	char* teste = (char*)malloc(20);
 	strcpy(teste, "Isto eh um teste!\n");
 	return teste;
 }
