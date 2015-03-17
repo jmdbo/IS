@@ -28,7 +28,8 @@ public class DeviceLib {
         if (operation.equals("ChangeState")) {
             // AULA 3 - Chamar a DLL para mudar o estado
             int state = Integer.parseInt(st.nextToken());
-            System.err.println("ERROR: Impossible to collect data");            //Deve desaparecer
+            String error=lib.errorString();
+            System.err.println(error);            //Deve desaparecer
         }
         //Aula 3 - Esta parte deve ser removida e a chamada à DLL deve ser feita aqui
         System.err.println("ERROR: Impossible to collect data");                //Deve desaparecer

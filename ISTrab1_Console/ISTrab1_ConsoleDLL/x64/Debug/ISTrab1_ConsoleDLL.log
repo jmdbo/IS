@@ -1,10 +1,14 @@
-﻿Build started 05/03/2015 14:29:02.
+﻿Build started 17/03/2015 12:19:24.
      1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_ConsoleDLL\ISTrab1_ConsoleDLL.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\dev\IS\ISTrab1_Console\ISTrab1_DLL /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt main.cpp
+         main.cpp
+     1>main.cpp(4): warning C4101: 'string' : unreferenced local variable
+       Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_ConsoleDLL.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\dev\IS\ISTrab1_Console\x64\Debug ISTrab1_DLL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_ConsoleDLL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_ConsoleDLL.lib" /MACHINE:X64 x64\Debug\main.obj
          ISTrab1_ConsoleDLL.vcxproj -> C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_ConsoleDLL.exe
      1>Done Building Project "C:\dev\IS\ISTrab1_Console\ISTrab1_ConsoleDLL\ISTrab1_ConsoleDLL.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.27
+Time Elapsed 00:00:00.46

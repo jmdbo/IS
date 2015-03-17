@@ -148,7 +148,7 @@
     <ClInclude Include="Hardware_windmill.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Hardware_windmill.c" />
+    <ClCompile Include="Hardware_windmill.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
