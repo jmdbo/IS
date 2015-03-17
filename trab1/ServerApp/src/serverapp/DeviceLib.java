@@ -28,14 +28,19 @@ public class DeviceLib {
         if (operation.equals("ChangeState")) {
             // AULA 3 - Chamar a DLL para mudar o estado
             int state = Integer.parseInt(st.nextToken());
-            String error=lib.errorString();
-            System.err.println(error);            //Deve desaparecer
+            int rval = lib.turn_on(state);
+            if(rval==0){
+                System.err.println("System was already in pretended state!");
+            }
         }
         //Aula 3 - Esta parte deve ser removida e a chamada à DLL deve ser feita aqui
-        System.err.println("ERROR: Impossible to collect data");                //Deve desaparecer
-        reply = "-1" + utilities.constants.token +                              //Deve desaparecer
-                "-1" + utilities.constants.token +                              //Deve desaparecer
-                "-1" + utilities.constants.token;                               //Deve desaparecer
+        //System.err.println("ERROR: Impossible to collect data");
+        int isOn=lib.is_on();
+        float power = lib.energy_production();
+        String err = lib.errorString();
+        reply = isOn + utilities.constants.token +                              //Deve desaparecer
+                power + utilities.constants.token +                              //Deve desaparecer
+                err + utilities.constants.token;                               //Deve desaparecer
         return reply;
     }
 }
