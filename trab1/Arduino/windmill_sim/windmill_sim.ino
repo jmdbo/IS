@@ -21,10 +21,16 @@ int buttonState1=0;      //state od buttonPin1
 int sensorValue=0;       //Value of potPin
 int isOn=0;              //Statio State
 char buffer[10];         //rx % tx buffer 
+char errorbuffer[10];    //buffer for error.
 
 //clear tx&rxbuffer
 void clean_buffer(){
   memset(buffer,0,sizeof(buffer)); 
+}
+
+//clear error buiffer
+void clean_errorbuffer(){
+  memeset(errorbuffer,0,sizeof(errorbuffer));
 }
 
 //initialization of PinMode
@@ -102,12 +108,19 @@ void loop(){
     Serial.println(isOn); 
     clean_buffer();
   }
-  //Transmission of an error
-  if(buttonState==HIGH){
-    Serial.println("Error_message_1");
-    clean_buffer();
+
+  //Answer to error comand
+  if(!strcmp(buffer,"error")){
+    Serial.print("error: ");
+    Serial.println(errorbuffer);
+    clean_buffer(); 
   }
-  
+
+  if(buttonState==HIGH){
+    strcpy(errorbuffer,"error-1");
+  }
+
   if(buttonState1==HIGH)
-    software_reboot();
+    clean_errorbuffer();
 }
+
