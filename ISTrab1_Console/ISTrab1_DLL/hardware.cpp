@@ -1,16 +1,38 @@
 #include "hardware.h"
+#include "SerialClass.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 int state=0;
+Serial* SP=NULL;
 
 _declspec(dllexport)float energyProduction(){
-	float r = (float)(rand()) / (float)(RAND_MAX);
+	float r = -1;
+
+	//if has no connection
+	if (SP == NULL){
+		SP = new Serial("\\\\.\\COM3");
+	}
+	
+	char incomingData[10] = "";
+	int readResult = 0;
+
+	if (SP->IsConnected()){
+		SP->WriteData("enerProd", 8);
+		readResult = SP->ReadData(incomingData,10);
+		Sleep(500);
+	}
+	printf("%d",incomingData);
+	//float r = (float)(rand()) / (float)(RAND_MAX);
 	return r;
 }
 
 _declspec(dllexport)int turnOn(int Fstate){
+	//if has no connection
+	if (SP == NULL){
+		SP = new Serial("\\\\.\\COM3");
+	}
 	if (state == Fstate){
 		return 0;
 	}
@@ -22,10 +44,18 @@ _declspec(dllexport)int turnOn(int Fstate){
 }
 
 _declspec(dllexport)int isOn(){
+	//if has no connection
+	if (SP == NULL){
+		SP = new Serial("\\\\.\\COM3");
+	}
 	return state;
 }
 
 _declspec(dllexport)char* error(){
+	//if has no connection
+	if (SP == NULL){
+		SP = new Serial("\\\\.\\COM3");
+	}
 	char* teste = (char*)malloc(20);
 	strcpy(teste, "Isto eh um teste!\n");
 	return teste;

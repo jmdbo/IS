@@ -85,14 +85,12 @@ void loop(){
 
   //Answer to isOn comand
   if(!strcmp(buffer,"isOn")){
-    Serial.print("isOn: ");
     Serial.println(isOn);
     clean_buffer(); 
   }
 
   //Answer to enerProd command
   if(!strcmp(buffer,"enerProd")){
-    Serial.print("enerProd: ");
     Serial.println(sensorValue); 
     clean_buffer();
   }
@@ -106,14 +104,12 @@ void loop(){
       isOn=0;
       digitalWrite(ledPin,LOW);  
     }
-    Serial.print("isOn: ");
     Serial.println(isOn); 
     clean_buffer();
   }
 
   //Answer to error comand
   if(!strcmp(buffer,"error")){
-    Serial.print("error: ");
     Serial.println(errorbuffer);
     clean_buffer(); 
     digitalWrite(ledPin1,LOW);

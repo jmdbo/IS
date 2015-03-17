@@ -1,5 +1,5 @@
-﻿Build started 17/03/2015 12:20:43.
-     1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_JNI\ISTrab1_JNI.vcxproj" on node 2 (Build target(s)).
+﻿Build started 17/03/2015 22:29:01.
+     1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_JNI\ISTrab1_JNI.vcxproj" on node 3 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\dev\IS\ISTrab1_Console\ISTrab1_DLL /I"C:\Program Files\Java\jdk1.8.0_40\include\win32" /I"C:\Program Files\Java\jdk1.8.0_40\include" /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D ISTRAB1_JNI_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt Hardware_windmill.cpp
          Hardware_windmill.cpp
@@ -11,4 +11,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.41
+Time Elapsed 00:00:01.06

@@ -1,7 +1,7 @@
 #include "hardware.h"
 #include <stdio.h>
 	int main(){
-		char string[20];
+		//char string[20];
 		float f = energyProduction();
 		printf("Energy Production: %f \n", f);
 
@@ -13,4 +13,5 @@
 
 		char* s = error();
 		printf("%s", s);
+		getchar();
 	}
