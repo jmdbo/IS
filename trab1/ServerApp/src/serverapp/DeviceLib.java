@@ -39,6 +39,7 @@ public class DeviceLib {
         int isOn=lib.is_on();
         //Get current power production
         float power = lib.energy_production();
+        System.out.println(power);
         //Get error state
         String err = lib.errorString();
         //Construct reply with acquired data

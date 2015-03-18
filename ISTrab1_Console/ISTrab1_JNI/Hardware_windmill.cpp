@@ -6,7 +6,7 @@
 
 
 	JNIEXPORT jfloat JNICALL Java_Hardware_windmill_energyProduction(JNIEnv * env, jclass javaClass){
-		jfloat energy = energyProduction();
+		float energy = energyProduction();
 		return energy;
 	}
 

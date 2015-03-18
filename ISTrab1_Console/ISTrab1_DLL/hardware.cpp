@@ -4,16 +4,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define COM "COM4"
+
 int state=0;
 Serial* SP=NULL;
+
 
 _declspec(dllexport)float energyProduction(){
 	float r = -1;
 
 	//if has no connection
 	if (SP == NULL){
-		//SP = new Serial("\\\\.\\COM6");
-		SP = new Serial("COM6");
+		SP = new Serial(COM);
 	}
 	
 	char incomingData[10] = "";
@@ -21,19 +23,18 @@ _declspec(dllexport)float energyProduction(){
 
 	if (SP->IsConnected()){
 		SP->WriteData("enerProd", 10);
-		Sleep(100);
+		Sleep(500);
 		readResult = SP->ReadData(incomingData,10);
-		
 	}
-	float res=atof(incomingData);
 	//float r = (float)(rand()) / (float)(RAND_MAX);
+	float res = atof(incomingData);
 	return res;
 }
 
 _declspec(dllexport)int turnOn(int Fstate){
 	//if has no connection
 	if (SP == NULL){
-		SP = new Serial("\\\\.\\COM3");
+		SP = new Serial(COM);
 	}
 	if (state == Fstate){
 		return 0;
@@ -48,7 +49,7 @@ _declspec(dllexport)int turnOn(int Fstate){
 _declspec(dllexport)int isOn(){
 	//if has no connection
 	if (SP == NULL){
-		SP = new Serial("\\\\.\\COM3");
+		SP = new Serial(COM);
 	}
 	return state;
 }
@@ -56,9 +57,9 @@ _declspec(dllexport)int isOn(){
 _declspec(dllexport)char* error(){
 	//if has no connection
 	if (SP == NULL){
-		SP = new Serial("\\\\.\\COM3");
+		SP = new Serial(COM);
 	}
 	char* teste = (char*)malloc(20);
-	strcpy(teste, "Isto eh um teste!\n");
+	strcpy(teste, "error");
 	return teste;
 }
