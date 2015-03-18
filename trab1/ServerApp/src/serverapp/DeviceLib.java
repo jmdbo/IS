@@ -35,9 +35,13 @@ public class DeviceLib {
         }
         //Aula 3 - Esta parte deve ser removida e a chamada à DLL deve ser feita aqui
         //System.err.println("ERROR: Impossible to collect data");
+        //Get current system state
         int isOn=lib.is_on();
+        //Get current power production
         float power = lib.energy_production();
+        //Get error state
         String err = lib.errorString();
+        //Construct reply with acquired data
         reply = isOn + utilities.constants.token +                              //Deve desaparecer
                 power + utilities.constants.token +                              //Deve desaparecer
                 err + utilities.constants.token;                               //Deve desaparecer

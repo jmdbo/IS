@@ -91,7 +91,8 @@ void loop(){
 
   //Answer to enerProd command
   if(!strcmp(buffer,"enerProd")){
-    Serial.println(sensorValue); 
+    float res = (float)sensorValue/10.0;
+    Serial.println(res); 
     clean_buffer();
   }
   //Answer to turnOn command

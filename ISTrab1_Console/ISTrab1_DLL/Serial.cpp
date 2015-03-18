@@ -6,7 +6,7 @@ Serial::Serial(char *portName)
     this->connected = false;
 
     //Try to connect to the given port throuh CreateFile
-    this->hSerial = CreateFile((LPCWSTR)portName,GENERIC_READ | GENERIC_WRITE,0,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
+    this->hSerial = CreateFileA(portName,GENERIC_READ | GENERIC_WRITE,0,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
 
     //Check if the connection was successfull
     if(this->hSerial==INVALID_HANDLE_VALUE)

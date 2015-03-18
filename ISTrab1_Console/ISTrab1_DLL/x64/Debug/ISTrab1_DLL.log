@@ -1,18 +1,15 @@
-﻿Build started 17/03/2015 22:28:58.
+﻿Build started 18/03/2015 03:33:56.
      1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_DLL\ISTrab1_DLL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D ISTRAB1_DLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt hardware.cpp Serial.cpp
-         Serial.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D ISTRAB1_DLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt hardware.cpp
          hardware.cpp
-     1>hardware.cpp(26): warning C4313: 'printf'  : '%d' in format string conflicts with argument 1 of type 'char *'
-         Generating Code...
+     1>hardware.cpp(28): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_DLL.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_DLL.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_DLL.lib" /MACHINE:X64 /DLL x64\Debug\hardware.obj
          x64\Debug\Serial.obj
-            Creating library C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_DLL.lib and object C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_DLL.exp
          ISTrab1_DLL.vcxproj -> C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_DLL.dll
      1>Done Building Project "C:\dev\IS\ISTrab1_Console\ISTrab1_DLL\ISTrab1_DLL.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.22
+Time Elapsed 00:00:00.81

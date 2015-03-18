@@ -12,20 +12,22 @@ _declspec(dllexport)float energyProduction(){
 
 	//if has no connection
 	if (SP == NULL){
-		SP = new Serial("\\\\.\\COM3");
+		//SP = new Serial("\\\\.\\COM6");
+		SP = new Serial("COM6");
 	}
 	
 	char incomingData[10] = "";
 	int readResult = 0;
 
 	if (SP->IsConnected()){
-		SP->WriteData("enerProd", 8);
+		SP->WriteData("enerProd", 10);
+		Sleep(100);
 		readResult = SP->ReadData(incomingData,10);
-		Sleep(500);
+		
 	}
-	printf("%d",incomingData);
+	float res=atof(incomingData);
 	//float r = (float)(rand()) / (float)(RAND_MAX);
-	return r;
+	return res;
 }
 
 _declspec(dllexport)int turnOn(int Fstate){
