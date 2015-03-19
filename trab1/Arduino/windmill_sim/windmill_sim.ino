@@ -92,19 +92,24 @@ void loop(){
   //Answer to enerProd command
   if(!strcmp(buffer,"enerProd")){
     float res = (float)sensorValue/10.0;
+    if(isOn==0){
+      res=0;
+    }
     Serial.println(res); 
     clean_buffer();
   }
   //Answer to turnOn command
   if(!strcmp(buffer,"turnOn")){
-    if(isOn==0){
-      isOn=1;
-      digitalWrite(ledPin,HIGH); 
-    }
-    else{
-      isOn=0;
-      digitalWrite(ledPin,LOW);  
-    }
+    isOn=1;
+    digitalWrite(ledPin,HIGH); 
+    Serial.println(isOn); 
+    clean_buffer();
+  }
+  
+  //Answer to turnOff command
+    if(!strcmp(buffer,"turnOff")){
+    isOn=0;
+    digitalWrite(ledPin,LOW); 
     Serial.println(isOn); 
     clean_buffer();
   }
@@ -112,8 +117,7 @@ void loop(){
   //Answer to error comand
   if(!strcmp(buffer,"error")){
     Serial.println(errorbuffer);
-    clean_buffer(); 
-    digitalWrite(ledPin1,LOW);
+    clean_buffer();
   }
 
   if(buttonState==HIGH){
