@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define COM "COM4"
+#define COM "COM6"
 
 int state=0;
 Serial* SP=NULL;
@@ -26,8 +26,8 @@ _declspec(dllexport)float energyProduction(){
 		Sleep(500);
 		readResult = SP->ReadData(incomingData,10);
 	}
-	//float r = (float)(rand()) / (float)(RAND_MAX);
-	float res = atof(incomingData);
+	//Cast para evitar warning do compilador
+	float res = (float)atof(incomingData);
 	return res;
 }
 
