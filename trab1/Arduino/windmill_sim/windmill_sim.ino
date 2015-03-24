@@ -39,7 +39,7 @@ int init_pinMode(){
   pinMode(buttonPin,INPUT);
   pinMode(buttonPin1,INPUT);
   pinMode(ledPin,OUTPUT);
-  pinMode(ledPin,OUTPUT);
+  pinMode(ledPin1,OUTPUT);
 
   return 0;  
 }
