@@ -1,5 +1,5 @@
 /***********************Windmill_Similation************************/
-/*****************System Integrated course form ******************/
+/*****************Systems Integration course  ********************/
 /*Faculdade Ciências e Tecnologias from New University of Lisbon*/
 /*********Authors: João Miguel Duarte Barata Oliveira **********/
 /***************************    &   ***************************/
@@ -52,15 +52,17 @@ int init_pinMode(){
 void updateLCD(){
   lcd.home();
   if(isOn){
-    lcd.write("Sys ON  ");
-  }else lcd.write("Sys OFF ");
-  lcd.write("enerProd: ");
-  lcd.write(enerProd);
+    lcd.write("S:ON ");
+  }else lcd.write("S: OFF ");
+  lcd.write("E:");
+  dtostrf(enerProd,2,2,buffer);
+  lcd.write(buffer);
+  lcd.write("kWh  ");
   lcd.setCursor(0,1);
   if(errorbuffer[0]==0){
-    lcd.write("No error detected.");
+    lcd.write("No error.  ");
   }else{
-    lcd.write("Error code: ");
+    lcd.write("EC: ");
     lcd.write(errorbuffer);
   }
 }
