@@ -1,13 +1,14 @@
-﻿Build started 23/03/2015 19:56:31.
-     1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_JNI\ISTrab1_JNI.vcxproj" on node 2 (Build target(s)).
+﻿Build started 28/03/2015 19:50:26.
+     1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_JNI\ISTrab1_JNI.vcxproj" on node 3 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\dev\IS\ISTrab1_Console\ISTrab1_DLL /I"C:\Program Files\Java\jdk1.8.0_40\include\win32" /I"C:\Program Files\Java\jdk1.8.0_40\include" /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D ISTRAB1_JNI_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt Hardware_windmill.cpp
          Hardware_windmill.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_JNI.dll" /INCREMENTAL /NOLOGO /LIBPATH:C:\dev\IS\ISTrab1_Console\x64\Debug ISTrab1_DLL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_JNI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_JNI.lib" /MACHINE:X64 /DLL x64\Debug\Hardware_windmill.obj
+            Creating library C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_JNI.lib and object C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_JNI.exp
          ISTrab1_JNI.vcxproj -> C:\dev\IS\ISTrab1_Console\x64\Debug\ISTrab1_JNI.dll
-     1>Done Building Project "C:\dev\IS\ISTrab1_Console\ISTrab1_JNI\ISTrab1_JNI.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\dev\IS\ISTrab1_Console\ISTrab1_JNI\ISTrab1_JNI.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.51
+Time Elapsed 00:00:00.59
