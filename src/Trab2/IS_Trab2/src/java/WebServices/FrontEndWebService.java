@@ -73,9 +73,9 @@ public class FrontEndWebService {
      * Web service operation
      */
     @WebMethod(operationName = "getDeviceHistory")
-    public String getDeviceHistory(@WebParam(name = "serialNumber") int serialNumber) {
+    public ArrayList<String> getDeviceHistory(@WebParam(name = "serialNumber") String serialNumber) {
         //TODO write your implementation code here:
-        return null;
+        return dbMgmt.getDeviceStates(serialNumber);
     }
     
 }
