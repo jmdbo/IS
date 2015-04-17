@@ -7,4 +7,5 @@ _declspec(dllexport)float energyProduction();
 _declspec(dllexport)int turnOn(int state);
 _declspec(dllexport)int isOn();
 _declspec(dllexport)char* error();
+_declspec(dllexport)int serialNumber();
 #endif

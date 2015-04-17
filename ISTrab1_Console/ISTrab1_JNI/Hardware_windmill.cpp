@@ -42,3 +42,8 @@ JNIEXPORT jstring JNICALL Java_Hardware_windmill_error(JNIEnv *var, jclass var2)
 	jstring errorJava = var->NewStringUTF(errorVal);
 	return errorJava;
 }
+
+JNIEXPORT jint JNICALL Java_Hardware_windmill_serialNumber(JNIEnv *var, jclass var2)
+{
+	return serialNumber();
+}

@@ -1,4 +1,4 @@
-﻿Build started 28/03/2015 19:50:24.
+﻿Build started 17/04/2015 19:33:45.
      1>Project "C:\dev\IS\ISTrab1_Console\ISTrab1_DLL\ISTrab1_DLL.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D ISTRAB1_DLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt hardware.cpp Serial.cpp
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.70
+Time Elapsed 00:00:01.81

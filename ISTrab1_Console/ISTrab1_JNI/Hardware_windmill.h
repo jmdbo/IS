@@ -39,6 +39,9 @@ JNIEXPORT jint JNICALL Java_Hardware_windmill_isOn
 JNIEXPORT jstring JNICALL Java_Hardware_windmill_error
   (JNIEnv *, jclass);
 
+JNIEXPORT jint JNICALL Java_Hardware_windmill_serialNumber
+(JNIEnv *var, jclass var2);
+
 #ifdef __cplusplus
 }
 #endif
