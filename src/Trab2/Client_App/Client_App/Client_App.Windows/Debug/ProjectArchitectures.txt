@@ -1,0 +1,1 @@
+C:\dev\IS\src\Trab2\Client_App\Client_App\Client_App.Windows\Client_App.Windows.vcxproj;x86
