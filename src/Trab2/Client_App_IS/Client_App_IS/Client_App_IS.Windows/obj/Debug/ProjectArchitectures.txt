@@ -1,0 +1,1 @@
+C:\dev\IS\src\Trab2\Client_App_IS\Client_App_IS\Client_App_IS.Windows\Client_App_IS.Windows.csproj;neutral

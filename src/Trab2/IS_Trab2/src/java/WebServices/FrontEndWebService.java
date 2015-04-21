@@ -33,9 +33,9 @@ public class FrontEndWebService {
      * Web service operation
      */
     @WebMethod(operationName = "addUser")
-    public Boolean addUser(@WebParam(name = "UserName") String UserName,
-            @WebParam(name = "Name") String Name, @WebParam(name = "Telephone") int Telephone,
-            @WebParam(name = "Residence") String Residence) {
+    public Boolean addUser(@WebParam(name = "userName") String UserName,
+            @WebParam(name = "name") String Name, @WebParam(name = "telephone") int Telephone,
+            @WebParam(name = "residence") String Residence) {
         return dbMgmt.InsertCustomer(UserName, Name, Telephone, Residence);
     }
 
