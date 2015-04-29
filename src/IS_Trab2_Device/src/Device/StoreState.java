@@ -31,7 +31,7 @@ public class StoreState extends Thread{
             try {
                 //Integrate with your DLL here
                 
-                int deviceSerialNumber = 123;
+                int deviceSerialNumber = lib.deviceSerialNumber();
                 int deviceState = lib.is_on();
                 String deviceError = lib.errorString();
                 float deviceEnergyProduction = lib.energy_production();
