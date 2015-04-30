@@ -35,8 +35,8 @@ public class FrontEndWebService {
     @WebMethod(operationName = "addUser")
     public Boolean addUser(@WebParam(name = "userName") String UserName,
             @WebParam(name = "name") String Name, @WebParam(name = "telephone") int Telephone,
-            @WebParam(name = "residence") String Residence) {
-        return dbMgmt.InsertCustomer(UserName, Name, Telephone, Residence);
+            @WebParam(name = "residence") String Residence, @WebParam(name = "hash") String hash) {
+        return dbMgmt.InsertCustomer(UserName, Name, Telephone, Residence, hash);
     }
 
     /**
@@ -76,6 +76,15 @@ public class FrontEndWebService {
     public ArrayList<String> getDeviceHistory(@WebParam(name = "serialNumber") String serialNumber) {
         //TODO write your implementation code here:
         return dbMgmt.getDeviceStates(serialNumber);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "loginUser")
+    public boolean loginUser(@WebParam(name = "user") String user, @WebParam(name = "passwordHash") String passwordHash) {
+        //TODO write your implementation code here:
+        return dbMgmt.checkLogin(user, passwordHash);
     }
     
 }

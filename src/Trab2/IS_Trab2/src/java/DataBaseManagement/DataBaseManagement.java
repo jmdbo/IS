@@ -59,7 +59,8 @@ public class DataBaseManagement {
                     + "USER_NAME VARCHAR(255) PRIMARY KEY,"
                     + "NAME VARCHAR(255),"
                     + "TELEPHONE INTEGER,"
-                    + "RESIDENCE VARCHAR(255));");
+                    + "RESIDENCE VARCHAR(255),"
+                    + "HASH VARCHAR(256));");
 
             statement.execute("create table PUBLIC.TYPE ("  
                     + "TYPE_UID INTEGER PRIMARY KEY,"
@@ -137,18 +138,20 @@ public class DataBaseManagement {
      Returns a boolean
      */
     
-    public boolean InsertCustomer(String userName, String name, int telephone, String residence) {
+    public boolean InsertCustomer(String userName, String name, int telephone, String residence, String hash) {
         try {
             openConnection();
             PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO PUBLIC.CUSTOMER("
                     + " USER_NAME,"
                     + " NAME,"
                     + " TELEPHONE,"
-                    + " RESIDENCE)  VALUES (?,?,?,?)");
+                    + " RESIDENCE,"
+                    + "HASH)  VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, name);
             preparedStatement.setInt(3, telephone);
             preparedStatement.setString(4, residence);
+            preparedStatement.setString(5, hash);
             preparedStatement.execute();
             closeConnection();
             return true;
@@ -357,6 +360,22 @@ public class DataBaseManagement {
             closeConnection();
             return true;
         } catch (SQLException | ParseException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return false;
+    }
+    
+    public boolean checkLogin(String userName, String hash){
+        try {
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT HASH FROM PUBLIC.CUSTOMER WHERE USER_NAME = '" + userName + "'");
+            rs.next();
+            String hashTrue = rs.getString(1);
+            closeConnection();
+            return hashTrue.equals(hash);
+            
+        }catch (SQLException ex) {
             Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
         closeConnection();

@@ -27,6 +27,6 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="User Name" VerticalAlignment="Top" Height="44" Width="420" FontSize="36"/>
         <PasswordBox Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="321" Height="45" FontSize="24" Password="pass"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Height="44" Width="420" FontSize="36"/>
-        <Button Content="Login" Grid.Column="2" HorizontalAlignment="Left" Margin="7,7,0,0" Grid.Row="4" VerticalAlignment="Top" Height="45" Width="327" FontSize="20"/>
+        <Button Content="Login" Grid.Column="2" HorizontalAlignment="Left" Margin="7,7,0,0" Grid.Row="4" VerticalAlignment="Top" Height="45" Width="327" FontSize="20" Click="Button_Click"/>
     </Grid>
 </Page>

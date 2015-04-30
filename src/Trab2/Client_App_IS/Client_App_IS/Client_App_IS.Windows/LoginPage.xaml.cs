@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Client_App_IS.FrontEndWebService;
+
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +28,22 @@ namespace Client_App_IS
         public LoginPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            FrontEndWebServiceClient client = new FrontEndWebServiceClient();
+            await client.OpenAsync();
+            await client.createDBAsync();
+            addUserResponse res1 = await client.addUserAsync("jmdbo", "João Barata", 217793070, "Mem Martins","Hash");
+            addDeviceResponse res = await client.addDeviceAsync(1, "jmdbo","SocketBee","Hello",1);
+            loginUserResponse res2 = await client.loginUserAsync("jmdbo", "Hash");
+            MessageDialog msg = new MessageDialog("Resultado " + res.@return.ToString());
+            await msg.ShowAsync();
+            
+
+
         }
     }
 }
