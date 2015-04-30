@@ -6,30 +6,42 @@
 package Device;
 
 import Hardware.windmill;
+//restlet import
+import org.restlet.Restlet;
+import org.restlet.resource.ServerResource;
+import org.restlet.resource.Delete;
+import org.restlet.resource.Get;
+import org.restlet.routing.Router;
+import org.restlet.routing.TemplateRoute;
+
 /**
  *
  * @author Pedro
  */
-public class windmill_server {
+
+public class windmill_server extends ServerResource{
     private windmill lib;
     
-    public int isOn(){
-        return lib.is_on();
+    @Get
+    public String turnOn(){
+        //return lib.turn_on(1);
+        System.out.println("1");
+        return "Ola";
     }
     
-    public float enerProd(){
-        return lib.energy_production();
+    @Delete
+    public int remove(){
+        return lib.turn_on(0);
     }
     
-    public int turnOn(int state){
-        return lib.turn_on(state);
-    }
-    
-    public String errorString(){
-        return lib.errorString();
-    }
-    
-    public int deviceserialNumber(){
-        return lib.deviceSerialNumber();
-    }
+    /*public Restlet createInboundRoot() {
+        Router router = new Router(getContext());
+
+        //router.attachDefault(new Directory(getContext(), "war:///"));
+        router.attach("/windmill",this.getClass());
+        //srouter.attach(getContext()+"/este", este_reource.class);
+        router.attachDefault(este_reource.class);
+                
+        return router;
+    }*/
 }
