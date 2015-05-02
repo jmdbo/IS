@@ -8,6 +8,8 @@
   <xs:element name="createDBResponse" type="tns:createDBResponse" />
   <xs:element name="getDeviceHistory" type="tns:getDeviceHistory" />
   <xs:element name="getDeviceHistoryResponse" type="tns:getDeviceHistoryResponse" />
+  <xs:element name="getDeviceTypes" type="tns:getDeviceTypes" />
+  <xs:element name="getDeviceTypesResponse" type="tns:getDeviceTypesResponse" />
   <xs:element name="getUserDevices" type="tns:getUserDevices" />
   <xs:element name="getUserDevicesResponse" type="tns:getUserDevicesResponse" />
   <xs:element name="getUserHistory" type="tns:getUserHistory" />
@@ -34,6 +36,14 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="createDB">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="createDBResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="getUserHistory">
     <xs:sequence>
       <xs:element minOccurs="0" name="userName" type="xs:string" />
@@ -44,12 +54,12 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="createDB">
+  <xs:complexType name="getDeviceTypes">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="createDBResponse">
+  <xs:complexType name="getDeviceTypesResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="addUser">

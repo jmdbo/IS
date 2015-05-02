@@ -198,11 +198,12 @@ public class DataBaseManagement {
      */
     public ArrayList<String> getMyDevices(String userName) {
         openConnection();
-        try (ResultSet rs = statement.executeQuery("SELECT SERIAL_NUMBER, FRIENDLY_NAME FROM PUBLIC.DEVICE WHERE USER_NAME = '" + userName + "'")) {
+        try (ResultSet rs = statement.executeQuery("SELECT SERIAL_NUMBER, FRIENDLY_NAME, TYPE_UID FROM PUBLIC.DEVICE WHERE USER_NAME = '" + userName + "'")) {
             ArrayList<String> myDevices = new ArrayList<>();
             while (rs.next()) {
                 myDevices.add(rs.getString(1));
                 myDevices.add(rs.getString(2));
+                myDevices.add(rs.getString(3));
             }
             closeConnection();
             return myDevices;
@@ -380,6 +381,20 @@ public class DataBaseManagement {
         }
         closeConnection();
         return false;
+    }
+    
+    public String getName(String userName){
+        try{
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT NAME FROM PUBLIC.CUSTOMER WHERE USER_NAME = '"+userName+"'");
+            String name = rs.getString(1);
+            closeConnection();
+            return name;
+        }catch(SQLException ex){
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return null;
     }
  
 

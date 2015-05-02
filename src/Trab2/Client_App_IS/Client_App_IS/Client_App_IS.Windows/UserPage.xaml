@@ -1,0 +1,111 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="Client_App_IS.UserPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client_App_IS"
+    xmlns:common="using:Client_App_IS.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
+        <DataTemplate x:Key="DeviceTemplate">
+            <Border x:Name="border" BorderBrush="White" BorderThickness="1" Width="500" Height="128" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Height="50" Margin="10,10,10,0" Style="{StaticResource SubheaderTextBlockStyle}" Text="{Binding Path=Name}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="58,9,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=Model}" VerticalAlignment="Top" Height="20" Width="181"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="112,9,0,0" Grid.Row="1" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=SerialNumber}" VerticalAlignment="Top" Height="20" Width="127"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=Type}" VerticalAlignment="Top"  Height="20" Width="190"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}" Text="Type: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="Model: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="Serial Number: " VerticalAlignment="Top" Grid.Column="1"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page.
+    -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Hub>
+            <Hub.Header>
+                <!-- Back button and page title -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button  x:Name="backButton" Margin="-1,-1,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top"/>
+                </Grid>
+            </Hub.Header>
+
+            <HubSection Width="780" Margin="0,0,80,0" Header="Welcome João!">
+                <HubSection.Background>
+                    <ImageBrush Stretch="UniformToFill" />
+                </HubSection.Background>
+                <DataTemplate>
+
+                </DataTemplate>
+
+            </HubSection>
+            <HubSection Width="600" Header="Devices">
+                <DataTemplate>
+                    <GridView
+                    x:Name="itemGridView"
+                    Margin="-4,-4,0,0"
+                    AutomationProperties.AutomationId="ItemGridView"
+                    AutomationProperties.Name="Items In Group"
+                    ItemsSource="{Binding Devices}"
+                    ItemTemplate="{StaticResource DeviceTemplate}"
+                    SelectionMode="Single"
+                    IsSwipeEnabled="false"
+                    IsItemClickEnabled="True">
+                        <!--ItemClick="ItemView_ItemClick"-->
+                    </GridView>
+
+                </DataTemplate>
+            </HubSection>
+            <HubSection Width="460" Header="Settings">
+                <DataTemplate>
+                    <Grid Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="Add Device" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.RowSpan="2"/>
+                        
+                    </Grid>
+
+
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+
+
+    </Grid>
+</Page>

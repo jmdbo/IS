@@ -86,5 +86,14 @@ public class FrontEndWebService {
         //TODO write your implementation code here:
         return dbMgmt.checkLogin(user, passwordHash);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getDeviceTypes")
+    public ArrayList<String> getDeviceTypes() {
+        //TODO write your implementation code here:
+        return dbMgmt.getDeviceTypes();
+    }
     
 }
