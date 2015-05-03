@@ -21,14 +21,14 @@ public class windmill_server extends ServerResource{
     private windmill lib;
     
     @Get
-    public int turnOn(){
+    public String turnOn(){
         System.out.println("On");
-        return lib.turn_on(1);
+        return Integer.toString(lib.turn_on(1));
     }
     
     @Delete
-    public int remove(){
+    public String remove(){
         System.out.println("Off");
-        return lib.turn_on(0);
+        return Integer.toString(lib.turn_on(0));
     }
 }
