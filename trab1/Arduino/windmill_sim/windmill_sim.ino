@@ -127,12 +127,13 @@ void loop(){
   }
 
   if(buttonState==HIGH){
-    strcpy(errorbuffer,"error-1");
+    strcpy(errorbuffer,"1");
     digitalWrite(ledPin1,HIGH);
   }
 
   if(buttonState1==HIGH){
     clean_errorbuffer();
+    strcpy(errorbuffer,"0");
     digitalWrite(ledPin1,LOW);
   }
 }
