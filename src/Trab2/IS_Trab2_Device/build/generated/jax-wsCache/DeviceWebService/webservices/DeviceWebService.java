@@ -27,6 +27,8 @@ public interface DeviceWebService {
     /**
      * 
      * @param serialNumber
+     * @param port
+     * @param ip
      * @param state
      * @param error
      * @param energyProduction
@@ -46,6 +48,10 @@ public interface DeviceWebService {
         @WebParam(name = "error", targetNamespace = "")
         int error,
         @WebParam(name = "energyProduction", targetNamespace = "")
-        int energyProduction);
+        int energyProduction,
+        @WebParam(name = "ip", targetNamespace = "")
+        String ip,
+        @WebParam(name = "port", targetNamespace = "")
+        int port);
 
 }

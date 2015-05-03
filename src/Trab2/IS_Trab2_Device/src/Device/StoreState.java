@@ -22,15 +22,10 @@ public class StoreState extends Thread{
     
     public StoreState(DeviceGUI gui) {
         this.myGUI = gui;        
-        lib = new windmill();
+        lib = gui.hardware;
         this.start();
     }
-    private static Boolean insertState(int serialNumber, int state, int error, int energyProduction) {
-        webservices.DeviceWebService_Service service = new webservices.DeviceWebService_Service();
-        webservices.DeviceWebService port = service.getDeviceWebServicePort();
-        return port.insertState(serialNumber, state, error, energyProduction);
-    }
-
+   
     @Override
     public void run() {
         Boolean a=true;
@@ -46,8 +41,11 @@ public class StoreState extends Thread{
                     deviceState=2;
                 int deviceError = Integer.parseInt(parse);
                 float deviceEnergyProduction = lib.energy_production();
+                if(myGUI.ip==null){
+                    myGUI.ip="localhost";
+                }
                 //To here (DLL)
-                Boolean result = insertState(deviceSerialNumber,deviceState,deviceError,(int)deviceEnergyProduction);
+                Boolean result = insertState(deviceSerialNumber,deviceState,deviceError,(int)deviceEnergyProduction, myGUI.ip, myGUI.portIp);
                 //Integrate with Cloud callig Web Service's Method, using the variables:
                 //deviceSerialNumber, deviceState, deviceError and deviceEnergyProduction   
                 
@@ -71,6 +69,13 @@ public class StoreState extends Thread{
             }
         }
     }
+
+    private static Boolean insertState(int serialNumber, int state, int error, int energyProduction, java.lang.String ip, int port1) {
+        webservices.DeviceWebService_Service service = new webservices.DeviceWebService_Service();
+        webservices.DeviceWebService port = service.getDeviceWebServicePort();
+        return port.insertState(serialNumber, state, error, energyProduction, ip, port1);
+    }
+
 
     
     

@@ -177,6 +177,12 @@
     <None Include="Service References\FrontEndWebService\Manufacturer_App_IS.FrontEndWebService.loginUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\FrontEndWebService\Manufacturer_App_IS.FrontEndWebService.turnDeviceOffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontEndWebService\Manufacturer_App_IS.FrontEndWebService.turnDeviceOnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FrontEndWebService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="state" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="error" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="energyProduction" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="ip" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +35,9 @@ import javax.xml.bind.annotation.XmlType;
     "serialNumber",
     "state",
     "error",
-    "energyProduction"
+    "energyProduction",
+    "ip",
+    "port"
 })
 public class InsertState {
 
@@ -41,6 +45,8 @@ public class InsertState {
     protected int state;
     protected int error;
     protected int energyProduction;
+    protected String ip;
+    protected int port;
 
     /**
      * Gets the value of the serialNumber property.
@@ -104,6 +110,46 @@ public class InsertState {
      */
     public void setEnergyProduction(int value) {
         this.energyProduction = value;
+    }
+
+    /**
+     * Gets the value of the ip property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIp() {
+        return ip;
+    }
+
+    /**
+     * Sets the value of the ip property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIp(String value) {
+        this.ip = value;
+    }
+
+    /**
+     * Gets the value of the port property.
+     * 
+     */
+    public int getPort() {
+        return port;
+    }
+
+    /**
+     * Sets the value of the port property.
+     * 
+     */
+    public void setPort(int value) {
+        this.port = value;
     }
 
 }

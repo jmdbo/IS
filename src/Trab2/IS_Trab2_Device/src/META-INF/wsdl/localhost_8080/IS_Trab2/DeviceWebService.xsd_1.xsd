@@ -10,6 +10,8 @@
 <xs:element name="state" type="xs:int"/>
 <xs:element name="error" type="xs:int"/>
 <xs:element name="energyProduction" type="xs:int"/>
+<xs:element name="ip" type="xs:string" minOccurs="0"/>
+<xs:element name="port" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 

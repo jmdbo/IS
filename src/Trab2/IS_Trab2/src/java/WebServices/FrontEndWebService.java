@@ -6,6 +6,8 @@
 package WebServices;
 
 import DataBaseManagement.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -116,5 +118,52 @@ public class FrontEndWebService {
         //TODO write your implementation code here:
         return dbMgmt.InsertManufacturer(UserName, Name, Telephone, Residence, Type, Hash);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "turnDeviceOn")
+    public int turnDeviceOn(@WebParam(name = "serialNumber") int serialNumber) {
+        //TODO write your implementation code here:
+        String connection = dbMgmt.getConncectionString(serialNumber);
+        try{
+            URL url = new URL(connection);
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestProperty(
+            "Content-Type", "application/x-www-form-urlencoded" );
+            httpCon.setRequestMethod("GET");
+            int response = httpCon.getResponseCode();
+            
+            return response;
+        } catch(Exception ex){
+            
+        }
+        return 0;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "turnDeviceOff")
+    public Integer turnDeviceOff(@WebParam(name = "serialNumber") int serialNumber) {
+        String connection = dbMgmt.getConncectionString(serialNumber);
+        try{
+            URL url = new URL(connection);
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestProperty(
+            "Content-Type", "application/x-www-form-urlencoded" );
+            httpCon.setRequestMethod("DELETE");
+            int response = httpCon.getResponseCode();
+            
+            return response;
+        } catch(Exception ex){
+            
+        }
+        return 0;
+    }
+    
+ 
     
 }

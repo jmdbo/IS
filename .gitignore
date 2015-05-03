@@ -28,3 +28,4 @@ hs_err_pid*
 /src/IS_Trab2_Device/dist/
 *.pdb
 /src/Trab2/IS_Trab2/dist/
+/src/Trab2/IS_Trab2_Device/dist/

@@ -20,22 +20,26 @@
   <xs:element name="loginManufacturerResponse" type="tns:loginManufacturerResponse" />
   <xs:element name="loginUser" type="tns:loginUser" />
   <xs:element name="loginUserResponse" type="tns:loginUserResponse" />
-  <xs:complexType name="getUserDevices">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="userName" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="getUserDevicesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
+  <xs:element name="turnDeviceOff" type="tns:turnDeviceOff" />
+  <xs:element name="turnDeviceOffResponse" type="tns:turnDeviceOffResponse" />
+  <xs:element name="turnDeviceOn" type="tns:turnDeviceOn" />
+  <xs:element name="turnDeviceOnResponse" type="tns:turnDeviceOnResponse" />
   <xs:complexType name="getDeviceHistory">
     <xs:sequence>
       <xs:element minOccurs="0" name="serialNumber" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getDeviceHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserDevices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserDevicesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
     </xs:sequence>
@@ -55,14 +59,6 @@
       <xs:element minOccurs="0" name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="createDB">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="createDBResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="getUserHistory">
     <xs:sequence>
       <xs:element minOccurs="0" name="userName" type="xs:string" />
@@ -71,6 +67,24 @@
   <xs:complexType name="getUserHistoryResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createDB">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="createDBResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="turnDeviceOn">
+    <xs:sequence>
+      <xs:element name="serialNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="turnDeviceOnResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getDeviceTypes">
@@ -116,6 +130,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="loginManufacturerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="turnDeviceOff">
+    <xs:sequence>
+      <xs:element name="serialNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="turnDeviceOffResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>

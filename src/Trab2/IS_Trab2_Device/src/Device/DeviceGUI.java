@@ -1,6 +1,8 @@
 package Device;
 
+import Hardware.windmill;
 import java.util.Random;
+import org.restlet.Context;
 import org.restlet.Server;
 import org.restlet.data.Protocol;
 
@@ -23,11 +25,22 @@ public class DeviceGUI extends javax.swing.JFrame {
     int state;
     int error;
     int energyProduction;
+    windmill hardware;
+    String ip;
+    int portIp;
 
     public DeviceGUI() {
-        Server_Application teste = new Server_Application();
+        hardware = new windmill();
+        //Server_Application teste = new Server_Application(hardware);
         try{
-            new Server(Protocol.HTTP, windmill_server.class).start();
+            Context contexto = new Context();
+            contexto.getAttributes().put("HARDWARE", hardware);
+            Server server = new Server(contexto,Protocol.HTTP,8092, windmill_server.class);         
+           
+            server.start();
+            ip=server.getAddress();
+            portIp = server.getActualPort();
+            
         }catch(Exception e){
             e.printStackTrace();
         

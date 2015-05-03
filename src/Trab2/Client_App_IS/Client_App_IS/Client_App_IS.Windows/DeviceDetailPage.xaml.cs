@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Client_App_IS.Model;
 using Client_App_IS.FrontEndWebService;
 using System.Collections.ObjectModel;
+using Windows.UI.Popups;
 
 // The Item Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 
@@ -137,6 +138,26 @@ namespace Client_App_IS
 
             }
 
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            turnDeviceOffResponse res = await client.turnDeviceOffAsync(currentDevice.SerialNumber);
+            if (res.@return != 200)
+            {
+                MessageDialog msg = new MessageDialog("Error turning device off! Please try again.");
+                await msg.ShowAsync();
+            }
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            turnDeviceOnResponse res = await client.turnDeviceOnAsync(currentDevice.SerialNumber);
+            if (res.@return != 200)
+            {
+                MessageDialog msg = new MessageDialog("Error turning device off! Please try again.");
+                await msg.ShowAsync();
+            }
         }
     }
 }

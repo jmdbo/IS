@@ -23,11 +23,13 @@ public class DeviceWebService {
     DataBaseManagement dbMgmt = new DataBaseManagement();
     
     @WebMethod(operationName = "insertState")
-    public Boolean insertState(@WebParam(name = "serialNumber") int serialNumber, @WebParam(name = "state") int state, @WebParam(name = "error") int error, @WebParam(name = "energyProduction") int energyProduction) {
+    public Boolean insertState(@WebParam(name = "serialNumber") int serialNumber, @WebParam(name = "state") int state,
+            @WebParam(name = "error") int error, @WebParam(name = "energyProduction") int energyProduction,
+            @WebParam(name = "ip") String ip, @WebParam(name = "port") int port) {
         //TODO write your implementation code here:
         Boolean result;
         try{
-            result = dbMgmt.insertState(serialNumber, state, error, energyProduction);
+            result = dbMgmt.insertState(serialNumber, state, error, energyProduction, ip, port);
         }catch(Exception ex){
             result = null;
         }
