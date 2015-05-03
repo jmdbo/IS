@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://WebServices/" xmlns:tns="http://WebServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="addDevice" nillable="true" type="tns:addDevice"/>
+
+  <xs:element name="addDeviceResponse" nillable="true" type="tns:addDeviceResponse"/>
+
+  <xs:element name="addUser" nillable="true" type="tns:addUser"/>
+
+  <xs:element name="addUserResponse" nillable="true" type="tns:addUserResponse"/>
+
+  <xs:element name="createDB" nillable="true" type="tns:createDB"/>
+
+  <xs:element name="createDBResponse" nillable="true" type="tns:createDBResponse"/>
+
+  <xs:element name="getDeviceHistory" nillable="true" type="tns:getDeviceHistory"/>
+
+  <xs:element name="getDeviceHistoryResponse" nillable="true" type="tns:getDeviceHistoryResponse"/>
+
+  <xs:element name="getUserDevices" nillable="true" type="tns:getUserDevices"/>
+
+  <xs:element name="getUserDevicesResponse" nillable="true" type="tns:getUserDevicesResponse"/>
+
+  <xs:element name="getUserHistory" nillable="true" type="tns:getUserHistory"/>
+
+  <xs:element name="getUserHistoryResponse" nillable="true" type="tns:getUserHistoryResponse"/>
+
+  <xs:element name="loginUser" nillable="true" type="tns:loginUser"/>
+
+  <xs:element name="loginUserResponse" nillable="true" type="tns:loginUserResponse"/>
+
+  <xs:complexType name="getUserDevices">
+    <xs:sequence>
+      <xs:element name="userName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserDevicesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDeviceHistory">
+    <xs:sequence>
+      <xs:element name="serialNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDeviceHistoryResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createDB">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="createDBResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserHistory">
+    <xs:sequence>
+      <xs:element name="userName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserHistoryResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addUser">
+    <xs:sequence>
+      <xs:element name="hash" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="residence" type="xs:string" minOccurs="0"/>
+      <xs:element name="telephone" type="xs:int"/>
+      <xs:element name="userName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addDevice">
+    <xs:sequence>
+      <xs:element name="deviceType" type="xs:int"/>
+      <xs:element name="friendlyName" type="xs:string" minOccurs="0"/>
+      <xs:element name="model" type="xs:string" minOccurs="0"/>
+      <xs:element name="serialNumber" type="xs:int"/>
+      <xs:element name="userName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addDeviceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loginUser">
+    <xs:sequence>
+      <xs:element name="passwordHash" type="xs:string" minOccurs="0"/>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loginUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

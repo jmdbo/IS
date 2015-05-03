@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://WebServices/" xmlns:tns="http://WebServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="insertState" nillable="true" type="tns:insertState"/>
+
+  <xs:element name="insertStateResponse" nillable="true" type="tns:insertStateResponse"/>
+
+  <xs:complexType name="insertState">
+    <xs:sequence>
+      <xs:element name="energyProduction" type="xs:int"/>
+      <xs:element name="error" type="xs:int"/>
+      <xs:element name="serialNumber" type="xs:int"/>
+      <xs:element name="state" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertStateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

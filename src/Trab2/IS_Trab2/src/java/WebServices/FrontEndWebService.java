@@ -33,10 +33,10 @@ public class FrontEndWebService {
      * Web service operation
      */
     @WebMethod(operationName = "addUser")
-    public Boolean addUser(@WebParam(name = "UserName") String UserName,
-            @WebParam(name = "Name") String Name, @WebParam(name = "Telephone") int Telephone,
-            @WebParam(name = "Residence") String Residence) {
-        return dbMgmt.InsertCustomer(UserName, Name, Telephone, Residence);
+    public Boolean addUser(@WebParam(name = "userName") String UserName,
+            @WebParam(name = "name") String Name, @WebParam(name = "telephone") int Telephone,
+            @WebParam(name = "residence") String Residence, @WebParam(name = "hash") String hash) {
+        return dbMgmt.InsertCustomer(UserName, Name, Telephone, Residence, hash);
     }
 
     /**
@@ -76,6 +76,45 @@ public class FrontEndWebService {
     public ArrayList<String> getDeviceHistory(@WebParam(name = "serialNumber") String serialNumber) {
         //TODO write your implementation code here:
         return dbMgmt.getDeviceStates(serialNumber);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "loginUser")
+    public boolean loginUser(@WebParam(name = "user") String user, @WebParam(name = "passwordHash") String passwordHash) {
+        //TODO write your implementation code here:
+        return dbMgmt.checkLogin(user, passwordHash);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getDeviceTypes")
+    public ArrayList<String> getDeviceTypes() {
+        //TODO write your implementation code here:
+        return dbMgmt.getDeviceTypes();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "loginManufacturer")
+    public Integer loginManufacturer(@WebParam(name = "userName") String UserName, @WebParam(name = "hash") String Hash) {
+        //TODO write your implementation code here:
+        return dbMgmt.checkLoginManufacturer(UserName, Hash);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addManufacturer")
+    public Boolean addManufacturer(@WebParam(name = "UserName") String UserName,
+            @WebParam(name = "Name") String Name, @WebParam(name = "Telephone") int Telephone,
+            @WebParam(name = "Type") int Type, @WebParam(name = "Residence") String Residence,
+            @WebParam(name = "Hash") String Hash) {
+        //TODO write your implementation code here:
+        return dbMgmt.InsertManufacturer(UserName, Name, Telephone, Residence, Type, Hash);
     }
     
 }
