@@ -16,8 +16,4 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)FrontEndWebService.wsdl" />
-    <None Include="$(MSBuildThisFileDirectory)FrontEndWebService_schema1.xsd" />
-  </ItemGroup>
 </Project>

@@ -1,0 +1,143 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client_App_IS"
+    xmlns:common="using:Client_App_IS.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Chart="using:Telerik.UI.Xaml.Controls.Chart"
+    x:Name="pageRoot"
+    x:Class="Client_App_IS.DeviceDetailPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    
+    
+    
+    
+    -->
+    <Page.Resources>
+        <DataTemplate x:Key="DeviceDataTemplate">
+            <Border x:Name="border" BorderBrush="White" BorderThickness="1"  Height="90" Width="899" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="58,9,0,0" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=Time}" VerticalAlignment="Top" Height="20" Width="381"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="138,10,0,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=EnerProd}" VerticalAlignment="Top" Height="20" Width="300"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="130,5,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=StateDescription}" VerticalAlignment="Top"  Height="20" Width="309"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="128,5,0,0" Grid.Row="1" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=ErrorDescription}" VerticalAlignment="Top"  Height="20" Width="311"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="State Description: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" Text="Time: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" Text="Energy Production: " VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="Error Description: " VerticalAlignment="Top" />
+
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--
+            TODO: Content should be placed within the following grid 
+                  to show details for the current item
+        -->
+        <Grid Grid.Row="1" x:Name="contentRegion"/>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+				Style="{StaticResource NavigationBackButtonNormalStyle}"
+				VerticalAlignment="Top"
+				AutomationProperties.Name="Back"
+				AutomationProperties.AutomationId="BackButton"
+				AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+				IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="56*"/>
+                <RowDefinition Height="697*"/>
+                <RowDefinition Height="187*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="dataList" Grid.Column="1" Grid.Row="1" Margin="10" ItemTemplate="{StaticResource DeviceDataTemplate}" ItemsSource="{Binding DeviceData}"/>
+            <ProgressRing x:Name="RingList"  Grid.Column="1" Grid.Row="1" IsActive="True" Height="85" Width="85"/>
+            <TextBlock Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="Raw Data" Style="{StaticResource SubheaderTextBlockStyle}"/>
+            <Chart:RadCartesianChart x:Name="chartDevice" Margin="10" Grid.Row="1" >
+                <Chart:RadCartesianChart.HorizontalAxis>
+                    <Chart:DateTimeContinuousAxis/>
+                </Chart:RadCartesianChart.HorizontalAxis>
+                <Chart:RadCartesianChart.VerticalAxis>
+                    <Chart:LinearAxis/>
+                </Chart:RadCartesianChart.VerticalAxis>
+                <Chart:ScatterLineSeries ItemsSource="{Binding DeviceData}">
+                    <Chart:ScatterLineSeries.XValueBinding>
+                        <Chart:PropertyNameDataPointBinding PropertyName="Time"/>
+                    </Chart:ScatterLineSeries.XValueBinding>
+                    <Chart:ScatterLineSeries.YValueBinding>
+                        <Chart:PropertyNameDataPointBinding PropertyName="EnerProd"/>
+                    </Chart:ScatterLineSeries.YValueBinding>
+                </Chart:ScatterLineSeries>
+            </Chart:RadCartesianChart>
+            <TextBlock Margin="10" TextWrapping="Wrap" Text="Power Chart" Style="{StaticResource SubheaderTextBlockStyle}"/>
+            <ProgressRing x:Name="RingChart" Grid.Row="1" IsActive="True" Height="85" Width="85"/>
+            <Border x:Name="border" BorderBrush="White" BorderThickness="1"  Grid.Column="1" Grid.Row="2" >
+                <Grid x:Name="lastState">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="58,9,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=Time}" VerticalAlignment="Top" Height="20" Width="381"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="138,10,0,0" Grid.Row="1" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=EnerProd}" VerticalAlignment="Top" Height="20" Width="300"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="130,5,0,0" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=StateDescription}" VerticalAlignment="Top"  Height="20" Width="309"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="128,5,0,0" Grid.Row="2" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=ErrorDescription}" VerticalAlignment="Top"  Height="20" Width="311"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}" Text="State Description: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="Time: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="Energy Production: " VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="2" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="Error Description: " VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Style="{StaticResource HeaderTextBlockStyle}" Text="Last State from Device" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="44" Width="938"/>
+
+                </Grid>
+            </Border>
+            <Button Content="Turn On" HorizontalAlignment="Left" Margin="7,7,0,0" Grid.Row="2" VerticalAlignment="Top" Height="81" Width="188"/>
+            <Button Content="Turn Off" HorizontalAlignment="Right" Margin="0,7,7,0" Grid.Row="2" VerticalAlignment="Top" Width="190" Height="81"/>
+            <Button Content="Refresh" HorizontalAlignment="Right" Margin="0,7,397,0" Grid.Row="2" VerticalAlignment="Top" Width="190" Height="81" Click="Button_Click"/>
+
+        </Grid>
+
+    </Grid>
+</Page>

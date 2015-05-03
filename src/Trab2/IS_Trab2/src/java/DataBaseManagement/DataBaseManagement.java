@@ -59,7 +59,16 @@ public class DataBaseManagement {
                     + "USER_NAME VARCHAR(255) PRIMARY KEY,"
                     + "NAME VARCHAR(255),"
                     + "TELEPHONE INTEGER,"
-                    + "RESIDENCE VARCHAR(255));");
+                    + "RESIDENCE VARCHAR(255),"
+                    + "HASH VARCHAR(256));");
+            
+            statement.execute("create table PUBLIC.MANUFACTURER ("
+                    + "USER_NAME VARCHAR(255) PRIMARY KEY,"
+                    + "NAME VARCHAR(255),"
+                    + "TELEPHONE INTEGER,"
+                    + "TYPE INTEGER,"
+                    + "RESIDENCE VARCHAR(255),"
+                    + "HASH VARCHAR(256));");
 
             statement.execute("create table PUBLIC.TYPE ("  
                     + "TYPE_UID INTEGER PRIMARY KEY,"
@@ -118,6 +127,7 @@ public class DataBaseManagement {
             statement.execute("insert into PUBLIC.ERROR VALUES("
                     + "2,"
                     + "'Extraccao de Dados');");
+            statement.execute("insert into manufacturer values ( 'jmdbo', 'Joao Barata', 217793070, 1, 'Mem Martins', 'Lisboa')");
 
             //--------------------------------------------------------------------------------------------------------------------
             System.out.println("Database has been created");
@@ -137,18 +147,20 @@ public class DataBaseManagement {
      Returns a boolean
      */
     
-    public boolean InsertCustomer(String userName, String name, int telephone, String residence) {
+    public boolean InsertCustomer(String userName, String name, int telephone, String residence, String hash) {
         try {
             openConnection();
             PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO PUBLIC.CUSTOMER("
                     + " USER_NAME,"
                     + " NAME,"
                     + " TELEPHONE,"
-                    + " RESIDENCE)  VALUES (?,?,?,?)");
+                    + " RESIDENCE,"
+                    + "HASH)  VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, name);
             preparedStatement.setInt(3, telephone);
             preparedStatement.setString(4, residence);
+            preparedStatement.setString(5, hash);
             preparedStatement.execute();
             closeConnection();
             return true;
@@ -195,11 +207,12 @@ public class DataBaseManagement {
      */
     public ArrayList<String> getMyDevices(String userName) {
         openConnection();
-        try (ResultSet rs = statement.executeQuery("SELECT SERIAL_NUMBER, FRIENDLY_NAME FROM PUBLIC.DEVICE WHERE USER_NAME = '" + userName + "'")) {
+        try (ResultSet rs = statement.executeQuery("SELECT SERIAL_NUMBER, FRIENDLY_NAME, TYPE_UID FROM PUBLIC.DEVICE WHERE USER_NAME = '" + userName + "'")) {
             ArrayList<String> myDevices = new ArrayList<>();
             while (rs.next()) {
                 myDevices.add(rs.getString(1));
                 myDevices.add(rs.getString(2));
+                myDevices.add(rs.getString(3));
             }
             closeConnection();
             return myDevices;
@@ -357,6 +370,92 @@ public class DataBaseManagement {
             closeConnection();
             return true;
         } catch (SQLException | ParseException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return false;
+    }
+    /*
+    This string receives a userName and a hash and checks if they match with the
+    information on the DB. Returns a boolean.
+    */
+    public boolean checkLogin(String userName, String hash){
+        try {
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT HASH FROM PUBLIC.CUSTOMER WHERE USER_NAME = '" + userName + "'");
+            rs.next();
+            String hashTrue = rs.getString(1);
+            closeConnection();
+            return hashTrue.equals(hash);
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return false;
+    }
+    /*This method receives a String with the user name and returns a string with
+    the customer real name.
+    
+    */
+    public String getName(String userName){
+        try{
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT NAME FROM PUBLIC.CUSTOMER WHERE USER_NAME = '"+userName+"'");
+            String name = rs.getString(1);
+            closeConnection();
+            return name;
+        }catch(SQLException ex){
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return null;
+    }
+     /*  This string receives a userName and a hash and checks if they match with the
+    information on the DB. Returns a boolean.
+    */
+    public int checkLoginManufacturer(String userName, String hash){
+        try {
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT HASH, TYPE FROM PUBLIC.MANUFACTURER WHERE USER_NAME = '" + userName + "'");
+            rs.next();
+            String hashTrue = rs.getString(1);
+            int type = rs.getInt(2);
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, hashTrue);
+            if(hashTrue.equals(hash)){
+                closeConnection();
+                return type;
+            }
+            closeConnection();
+            return 0;
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return 0;        
+    }
+    
+    public boolean InsertManufacturer(String userName, String name, int telephone, String residence,int type, String hash) {
+        try {
+            openConnection();
+            PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO PUBLIC.MANUFACTURER("
+                    + " USER_NAME,"
+                    + " NAME,"
+                    + " TELEPHONE,"
+                    + " TYPE,"
+                    + " RESIDENCE,"
+                    + "HASH)  VALUES (?,?,?,?,?,?)");
+            preparedStatement.setString(1, userName);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, telephone);
+            preparedStatement.setInt(4, type);
+            preparedStatement.setString(5, residence);
+            preparedStatement.setString(6, hash);
+            preparedStatement.execute();
+            closeConnection();
+            return true;
+        } catch (SQLException ex) {
             Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
         closeConnection();

@@ -107,18 +107,38 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="DeviceDetailPage.xaml.cs">
+      <DependentUpon>DeviceDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Model\DeviceData.cs" />
+    <Compile Include="Model\DeviceType.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="MyUserControl1.xaml.cs">
+      <DependentUpon>MyUserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\FrontEndService\Reference.cs">
+    <Compile Include="AddDevicePage.xaml.cs">
+      <DependentUpon>AddDevicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FrontEndWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DeviceModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -126,26 +146,32 @@
     </AppxManifest>
     <None Include="Client_App_IS.Windows_TemporaryKey.pfx" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\FrontEndService\Client_App_IS.FrontEndService.addDeviceResponse.datasource">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.addDeviceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FrontEndService\Client_App_IS.FrontEndService.addUserResponse.datasource">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.addUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FrontEndService\Client_App_IS.FrontEndService.createDBResponse.datasource">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.createDBResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FrontEndService\Client_App_IS.FrontEndService.getDeviceHistoryResponse.datasource">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.getDeviceHistoryResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FrontEndService\Client_App_IS.FrontEndService.getUserDevicesResponse.datasource">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.getDeviceTypesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FrontEndService\Client_App_IS.FrontEndService.getUserHistoryResponse.datasource">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.getUserDevicesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FrontEndService\FrontEndWebService.wsdl" />
-    <None Include="Service References\FrontEndService\FrontEndWebService_schema1.xsd">
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.getUserHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.loginUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontEndWebService\FrontEndWebService.wsdl" />
+    <None Include="Service References\FrontEndWebService\FrontEndWebService.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -154,25 +180,50 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
-    <None Include="Service References\FrontEndService\Reference.svcmap">
+    <None Include="Service References\FrontEndWebService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\FrontEndService\configuration.svcinfo" />
-    <None Include="Service References\FrontEndService\configuration91.svcinfo" />
+    <None Include="Service References\FrontEndWebService\configuration.svcinfo" />
+    <None Include="Service References\FrontEndWebService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DeviceDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="AddDevicePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MyUserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\FrontEndService\" />
+    <WCFMetadataStorage Include="Service References\FrontEndWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Telerik UI For Windows Universal, Version=2015.1.420.45">
+      <Name>Telerik UI For Windows Universal</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

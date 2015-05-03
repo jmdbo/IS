@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="Client_App_IS.MyUserControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client_App_IS"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid Margin="0,0,-461,0">
+        <Border x:Name="border" BorderBrush="White" BorderThickness="1"  Height="90" Width="899" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Left" Margin="58,9,0,0" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=Model}" VerticalAlignment="Top" Height="20" Width="381"/>
+                <TextBlock HorizontalAlignment="Left" Margin="138,10,0,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=SerialNumber}" VerticalAlignment="Top" Height="20" Width="300"/>
+                <TextBlock HorizontalAlignment="Left" Margin="130,5,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=Type}" VerticalAlignment="Top"  Height="20" Width="309"/>
+                <TextBlock HorizontalAlignment="Left" Margin="128,5,0,0" Grid.Row="1" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Path=ErrorDescription}" VerticalAlignment="Top"  Height="20" Width="311"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Text="State Description: " VerticalAlignment="Top" />
+                <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" Text="Time: " VerticalAlignment="Top" />
+                <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" Text="Energy Production: " VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" Grid.Column="1" Style="{StaticResource TitleTextBlockStyle}" Text="Error Description: " VerticalAlignment="Top" />
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
