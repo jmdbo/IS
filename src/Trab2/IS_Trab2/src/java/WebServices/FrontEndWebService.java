@@ -95,5 +95,26 @@ public class FrontEndWebService {
         //TODO write your implementation code here:
         return dbMgmt.getDeviceTypes();
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "loginManufacturer")
+    public Integer loginManufacturer(@WebParam(name = "userName") String UserName, @WebParam(name = "hash") String Hash) {
+        //TODO write your implementation code here:
+        return dbMgmt.checkLoginManufacturer(UserName, Hash);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addManufacturer")
+    public Boolean addManufacturer(@WebParam(name = "UserName") String UserName,
+            @WebParam(name = "Name") String Name, @WebParam(name = "Telephone") int Telephone,
+            @WebParam(name = "Type") int Type, @WebParam(name = "Residence") String Residence,
+            @WebParam(name = "Hash") String Hash) {
+        //TODO write your implementation code here:
+        return dbMgmt.InsertManufacturer(UserName, Name, Telephone, Residence, Type, Hash);
+    }
     
 }

@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Client_App_IS.Model;
+using Client_App_IS.FrontEndWebService;
+using System.Collections.ObjectModel;
 
 // The Item Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 
@@ -26,6 +29,9 @@ namespace Client_App_IS
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private DeviceModel currentDevice;
+        FrontEndWebServiceClient client = new FrontEndWebServiceClient();
+
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -62,17 +68,30 @@ namespace Client_App_IS
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            object navigationParameter;
-            if (e.PageState != null && e.PageState.ContainsKey("SelectedItem"))
+            currentDevice = e.NavigationParameter as DeviceModel;
+            defaultViewModel.Add("Title", "Device: "+currentDevice.Name);
+            await client.OpenAsync();
+            getDeviceHistoryResponse res = await client.getDeviceHistoryAsync(currentDevice.SerialNumber.ToString());
+            if (res.@return != null)
             {
-                navigationParameter = e.PageState["SelectedItem"];
+                
+                currentDevice.deviceData.Clear();
+                for (int i = 0; i < (res.@return.Length/4); i++)
+                {
+                    DeviceData data = new DeviceData();
+                    data.Time=Convert.ToDateTime(res.@return[4 * i]);
+                    data.StateDescription = res.@return[(4 * i) + 1];
+                    data.ErrorDescription = res.@return[(4 * i) + 2];
+                    data.EnerProd = Convert.ToInt32(res.@return[(4 * i) + 3]);
+                    currentDevice.deviceData.Add(data);
+                }
+                lastState.DataContext = currentDevice.deviceData.Last();
+                defaultViewModel.Add("DeviceData", currentDevice.deviceData);
             }
-
-            // TODO: Assign a bindable group to this.DefaultViewModel["Group"]
-            // TODO: Assign a collection of bindable items to this.DefaultViewModel["Items"]
-            // TODO: Assign the selected item to this.flipView.SelectedItem
+            RingList.IsActive = false;
+            RingChart.IsActive = false;
         }
 
         #region NavigationHelper registration
@@ -97,5 +116,27 @@ namespace Client_App_IS
         }
 
         #endregion
+        //Refresh Button
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            getDeviceHistoryResponse res = await client.getDeviceHistoryAsync(currentDevice.SerialNumber.ToString());
+            if (res.@return != null)
+            {
+
+                currentDevice.deviceData.Clear();
+                for (int i = 0; i < (res.@return.Length / 4); i++)
+                {
+                    DeviceData data = new DeviceData();
+                    data.Time = Convert.ToDateTime(res.@return[4 * i]);
+                    data.StateDescription = res.@return[(4 * i) + 1];
+                    data.ErrorDescription = res.@return[(4 * i) + 2];
+                    data.EnerProd = Convert.ToInt32(res.@return[(4 * i) + 3]);
+                    currentDevice.deviceData.Add(data);
+                }
+                lastState.DataContext = currentDevice.deviceData.Last();
+
+            }
+
+        }
     }
 }

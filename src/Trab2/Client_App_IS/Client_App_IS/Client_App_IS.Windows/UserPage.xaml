@@ -85,7 +85,7 @@
                     ItemTemplate="{StaticResource DeviceTemplate}"
                     SelectionMode="Single"
                     IsSwipeEnabled="false"
-                    IsItemClickEnabled="True">
+                    IsItemClickEnabled="True" ItemClick="itemGridView_ItemClick">
                         <!--ItemClick="ItemView_ItemClick"-->
                     </GridView>
 

@@ -61,6 +61,14 @@ public class DataBaseManagement {
                     + "TELEPHONE INTEGER,"
                     + "RESIDENCE VARCHAR(255),"
                     + "HASH VARCHAR(256));");
+            
+            statement.execute("create table PUBLIC.MANUFACTURER ("
+                    + "USER_NAME VARCHAR(255) PRIMARY KEY,"
+                    + "NAME VARCHAR(255),"
+                    + "TELEPHONE INTEGER,"
+                    + "TYPE INTEGER,"
+                    + "RESIDENCE VARCHAR(255),"
+                    + "HASH VARCHAR(256));");
 
             statement.execute("create table PUBLIC.TYPE ("  
                     + "TYPE_UID INTEGER PRIMARY KEY,"
@@ -119,6 +127,7 @@ public class DataBaseManagement {
             statement.execute("insert into PUBLIC.ERROR VALUES("
                     + "2,"
                     + "'Extraccao de Dados');");
+            statement.execute("insert into manufacturer values ( 'jmdbo', 'Joao Barata', 217793070, 1, 'Mem Martins', 'Lisboa')");
 
             //--------------------------------------------------------------------------------------------------------------------
             System.out.println("Database has been created");
@@ -366,7 +375,10 @@ public class DataBaseManagement {
         closeConnection();
         return false;
     }
-    
+    /*
+    This string receives a userName and a hash and checks if they match with the
+    information on the DB. Returns a boolean.
+    */
     public boolean checkLogin(String userName, String hash){
         try {
             openConnection();
@@ -382,7 +394,10 @@ public class DataBaseManagement {
         closeConnection();
         return false;
     }
+    /*This method receives a String with the user name and returns a string with
+    the customer real name.
     
+    */
     public String getName(String userName){
         try{
             openConnection();
@@ -395,6 +410,56 @@ public class DataBaseManagement {
         }
         closeConnection();
         return null;
+    }
+     /*  This string receives a userName and a hash and checks if they match with the
+    information on the DB. Returns a boolean.
+    */
+    public int checkLoginManufacturer(String userName, String hash){
+        try {
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT HASH, TYPE FROM PUBLIC.MANUFACTURER WHERE USER_NAME = '" + userName + "'");
+            rs.next();
+            String hashTrue = rs.getString(1);
+            int type = rs.getInt(2);
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, hashTrue);
+            if(hashTrue.equals(hash)){
+                closeConnection();
+                return type;
+            }
+            closeConnection();
+            return 0;
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return 0;        
+    }
+    
+    public boolean InsertManufacturer(String userName, String name, int telephone, String residence,int type, String hash) {
+        try {
+            openConnection();
+            PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO PUBLIC.MANUFACTURER("
+                    + " USER_NAME,"
+                    + " NAME,"
+                    + " TELEPHONE,"
+                    + " TYPE,"
+                    + " RESIDENCE,"
+                    + "HASH)  VALUES (?,?,?,?,?,?)");
+            preparedStatement.setString(1, userName);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, telephone);
+            preparedStatement.setInt(4, type);
+            preparedStatement.setString(5, residence);
+            preparedStatement.setString(6, hash);
+            preparedStatement.execute();
+            closeConnection();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return false;
     }
  
 

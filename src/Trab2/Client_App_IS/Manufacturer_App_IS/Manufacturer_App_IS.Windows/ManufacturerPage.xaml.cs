@@ -1,8 +1,9 @@
-﻿using Client_App_IS.Common;
-using Client_App_IS.FrontEndWebService;
-using Client_App_IS.Model;
+﻿using Manufacturer_App_IS.Common;
+using Manufacturer_App_IS.FrontEndWebService;
+using Manufacturer_App_IS.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -19,16 +20,20 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
-namespace Client_App_IS
+namespace Manufacturer_App_IS
 {
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class LoginPage : Page
+    public sealed partial class ManufacturerPage : Page
     {
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private ObservableCollection<DeviceData> userSearchCollection = new ObservableCollection<DeviceData>();
+        private ObservableCollection<DeviceData> deviceSearchCollection = new ObservableCollection<DeviceData>();
+        private FrontEndWebServiceClient client = new FrontEndWebServiceClient();
+        private UserModel user;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -48,7 +53,7 @@ namespace Client_App_IS
         }
 
 
-        public LoginPage()
+        public ManufacturerPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -67,8 +72,17 @@ namespace Client_App_IS
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session. The state will be null the first time a page is visited.</param>
-        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            user = e.NavigationParameter as UserModel;
+            if (user.UserType != 1)
+            {
+                userButton.IsEnabled = false;
+            }
+            defaultViewModel.Add("DeviceSearch", deviceSearchCollection);
+            defaultViewModel.Add("UserSearch", userSearchCollection);
+            await client.OpenAsync();
+
         }
 
         /// <summary>
@@ -106,72 +120,54 @@ namespace Client_App_IS
 
         #endregion
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void userSearch_Click(object sender, RoutedEventArgs e)
         {
-            FrontEndWebServiceClient client = new FrontEndWebServiceClient();
-            MessageDialog msg;
-            loginUserResponse res2;
-            try
+            getUserHistoryResponse res = await client.getUserHistoryAsync(userBox.Text);
+            if (res.@return != null)
             {
-                await client.OpenAsync();
-                //await client.createDBAsync();
-                ring.IsActive = true;
-                //addUserResponse res1 = await client.addUserAsync("jmdbo", "João Barata", 217793070, "Mem Martins", "Hash");
-                //addDeviceResponse res = await client.addDeviceAsync(1, "jmdbo", "SocketBee", "Hello", 1);
-                res2 = await client.loginUserAsync(userBox.Text, passBox.Password);
-                msg = new MessageDialog("Resultado " + res2.@return.ToString());
-                await msg.ShowAsync();
-                if (res2.@return)
+                userSearchCollection.Clear();
+                for (int i = 0; i < (res.@return.Length/6); i++)
                 {
-                    UserModel user = new UserModel(userBox.Text);
-                    ObservableDictionary deviceTypes = new ObservableDictionary();
-                    getDeviceTypesResponse devTyp = await client.getDeviceTypesAsync();
-                    String[] devTypResponse = devTyp.@return;
-                    if(devTypResponse!=null){
-                        for (int i = 0; i < (devTypResponse.Length/2); i++)
-			            {
-                            deviceTypes.Add(devTypResponse[2*i],devTypResponse[(2*i)+1]);                                
-			            }
-                    }
-                    else{
-                        return;
-                    }
-                    getUserDevicesResponse devReq = await client.getUserDevicesAsync(user.UserName);
-                    String[] userDevices = devReq.@return;
-                    if (userDevices != null) {
-                        for (int i = 0; i < (userDevices.Length/3); i++)
-                        {
-                            object type;
-                            deviceTypes.TryGetValue(userDevices[(3 * i) + 2],out type);
-                            DeviceModel device = new DeviceModel(user.UserName, userDevices[(3 * i) + 1], Convert.ToInt32(userDevices[3 * i]),(String)type);
-                            user.Devices.Add(device);
-                        
-                        }
-                    }
-                    user.deviceTypes = deviceTypes;
-                    this.Frame.Navigate(typeof(UserPage),user);
-                    return;
+                    userSearchCollection.Add(new DeviceData(res.@return[6 * i],//Time
+                        res.@return[(6 * i) + 3], //State
+                        res.@return[(6 * i) + 2], //Error
+                        res.@return[(6 * i) + 4], //Energy Production
+                        res.@return[(6 * i) + 1], //Serial Number
+                        res.@return[(6 * i) + 5]));         //Type Description           
                 }
-                else
-                {
-                    ring.IsActive = false;
-                    return;
-                }
+            }
 
-            }
-            catch (Exception ex)
-            {
-                msg = new MessageDialog("Erro de comunicação! " + ex.Message);
-                ring.IsActive = false;
-            }
-            await msg.ShowAsync();
-            
-            
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e)
+        private async void deviceSearch_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(UserPage));
+            getDeviceHistoryResponse res = await client.getDeviceHistoryAsync(deviceBox.Text);
+            if (res.@return != null)
+            {
+                deviceSearchCollection.Clear();
+                for (int i = 0; i < (res.@return.Length/4); i++)
+                {
+                    deviceSearchCollection.Add(new DeviceData(res.@return[6 * i],//Time
+                        res.@return[(6 * i) + 1], //State
+                        res.@return[(6 * i) + 2], //Error
+                        res.@return[(6 * i) + 3])); //Energy Production
+                    
+                }
+
+            }
+
+
+        }
+
+        private async void dbButton_Click(object sender, RoutedEventArgs e)
+        {
+            createDBResponse res = await client.createDBAsync();
+            MessageDialog msg = new MessageDialog("DataBase Creation Result: " + res.@return.ToString());
+        }
+
+        private void userButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RegisterPage), user);
         }
     }
 }

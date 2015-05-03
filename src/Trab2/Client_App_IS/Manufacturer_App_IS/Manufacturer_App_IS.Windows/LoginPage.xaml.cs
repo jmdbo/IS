@@ -1,6 +1,6 @@
-﻿using Client_App_IS.Common;
-using Client_App_IS.FrontEndWebService;
-using Client_App_IS.Model;
+﻿using Manufacturer_App_IS.Common;
+using Manufacturer_App_IS.FrontEndWebService;
+using Manufacturer_App_IS.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
-namespace Client_App_IS
+namespace Manufacturer_App_IS
 {
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
@@ -110,46 +110,35 @@ namespace Client_App_IS
         {
             FrontEndWebServiceClient client = new FrontEndWebServiceClient();
             MessageDialog msg;
-            loginUserResponse res2;
+            
+            loginManufacturerResponse res2;
             try
             {
                 await client.OpenAsync();
                 //await client.createDBAsync();
                 ring.IsActive = true;
-                //addUserResponse res1 = await client.addUserAsync("jmdbo", "João Barata", 217793070, "Mem Martins", "Hash");
-                //addDeviceResponse res = await client.addDeviceAsync(1, "jmdbo", "SocketBee", "Hello", 1);
-                res2 = await client.loginUserAsync(userBox.Text, passBox.Password);
+                res2 = await client.loginManufacturerAsync(userBox.Text, passBox.Password);
                 msg = new MessageDialog("Resultado " + res2.@return.ToString());
                 await msg.ShowAsync();
-                if (res2.@return)
+                if (res2.@return != 0)
                 {
-                    UserModel user = new UserModel(userBox.Text);
+                    UserModel user = new UserModel(userBox.Text, res2.@return);
                     ObservableDictionary deviceTypes = new ObservableDictionary();
                     getDeviceTypesResponse devTyp = await client.getDeviceTypesAsync();
                     String[] devTypResponse = devTyp.@return;
-                    if(devTypResponse!=null){
-                        for (int i = 0; i < (devTypResponse.Length/2); i++)
-			            {
-                            deviceTypes.Add(devTypResponse[2*i],devTypResponse[(2*i)+1]);                                
-			            }
-                    }
-                    else{
-                        return;
-                    }
-                    getUserDevicesResponse devReq = await client.getUserDevicesAsync(user.UserName);
-                    String[] userDevices = devReq.@return;
-                    if (userDevices != null) {
-                        for (int i = 0; i < (userDevices.Length/3); i++)
+                    if (devTypResponse != null)
+                    {
+                        for (int i = 0; i < (devTypResponse.Length / 2); i++)
                         {
-                            object type;
-                            deviceTypes.TryGetValue(userDevices[(3 * i) + 2],out type);
-                            DeviceModel device = new DeviceModel(user.UserName, userDevices[(3 * i) + 1], Convert.ToInt32(userDevices[3 * i]),(String)type);
-                            user.Devices.Add(device);
-                        
+                            deviceTypes.Add(devTypResponse[2 * i], devTypResponse[(2 * i) + 1]);
                         }
                     }
+                    else
+                    {
+                        return;
+                    }
                     user.deviceTypes = deviceTypes;
-                    this.Frame.Navigate(typeof(UserPage),user);
+                    this.Frame.Navigate(typeof(ManufacturerPage), user);
                     return;
                 }
                 else
@@ -165,13 +154,6 @@ namespace Client_App_IS
                 ring.IsActive = false;
             }
             await msg.ShowAsync();
-            
-            
-        }
-
-        private void Register_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(UserPage));
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Client_App_IS.Model
+namespace Manufacturer_App_IS.Model
 {
     class DeviceModel
     {
