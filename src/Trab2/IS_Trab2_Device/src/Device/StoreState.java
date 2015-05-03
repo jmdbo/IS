@@ -40,10 +40,14 @@ public class StoreState extends Thread{
                 
                 int deviceSerialNumber = lib.deviceSerialNumber();
                 int deviceState = lib.is_on();
-                int deviceError = Integer.parseInt(lib.errorString());
+                String parse = lib.errorString();
+                parse = parse.replaceAll("(\\r|\\n)", "");
+                if(deviceState==0)
+                    deviceState=2;
+                int deviceError = Integer.parseInt(parse);
                 float deviceEnergyProduction = lib.energy_production();
                 //To here (DLL)
-                insertState(deviceSerialNumber,deviceState,deviceError,(int)deviceEnergyProduction);
+                Boolean result = insertState(deviceSerialNumber,deviceState,deviceError,(int)deviceEnergyProduction);
                 //Integrate with Cloud callig Web Service's Method, using the variables:
                 //deviceSerialNumber, deviceState, deviceError and deviceEnergyProduction   
                 
@@ -52,6 +56,7 @@ public class StoreState extends Thread{
                 System.out.println("\tState: " + deviceState);
                 System.out.println("\tErrors: " + deviceError);
                 System.out.println("\tEnergy Production: " + deviceEnergyProduction);
+                System.out.println("\tInsert State: "+result.toString());
                 myGUI.energyProduction =(int) deviceEnergyProduction;
                 myGUI.serialNumber=deviceSerialNumber;
                 myGUI.state=deviceState;
