@@ -12,7 +12,8 @@ import javax.jws.WebParam;
 
 /**
  *
- * @author João
+ * @author João Barata
+ * @author Pedro Martins
  */
 @WebService(serviceName = "DeviceWebService")
 public class DeviceWebService {

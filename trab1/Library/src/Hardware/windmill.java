@@ -22,6 +22,7 @@ public class windmill {
     native static int turnOn(int state);
     native static int isOn();
     native static String error();
+    native static int serialNumber();
    
     public float energy_production(){
         return windmill.energyProduction();
@@ -37,6 +38,10 @@ public class windmill {
     
     public String errorString(){
         return windmill.error();
+    }
+    
+    public int deviceSerialNumber(){
+        return windmill.serialNumber();
     }
 }
 

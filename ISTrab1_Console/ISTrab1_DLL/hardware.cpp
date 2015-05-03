@@ -106,3 +106,19 @@ _declspec(dllexport)char* error(){
 	strcpy(teste, incomingData);
 	return teste;
 }
+
+_declspec(dllexport)int serialNumber(){
+	int readResult;
+	char incomingData[10] = "";
+	//if has no connection
+	if (SP == NULL){
+		SP = new Serial(COM);
+	}
+	if (SP->IsConnected()){
+		SP->WriteData("serialN", 10);
+		Sleep(500);
+		readResult = SP->ReadData(incomingData, 10);
+	}
+	int res = atoi(incomingData);
+	return res;
+}
