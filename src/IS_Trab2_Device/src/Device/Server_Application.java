@@ -21,7 +21,6 @@ public class Server_Application extends ServerResource {
 
         //router.attachDefault(new Directory(getContext(), "war:///"));
         router.attach("/windmill", windmill_server.class);
-        System.out.println("Entrei");
         return router;
         
         

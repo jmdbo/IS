@@ -8,6 +8,7 @@ package Device;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Hardware.windmill;
+import static java.lang.Boolean.TRUE;
 
 
 /**
@@ -24,10 +25,12 @@ public class StoreState extends Thread{
         this.start();
         lib = new windmill();
     }
+    
 
     @Override
     public void run() {
-        while (true) {            
+        Boolean a=true;
+        while (a) {            
             try {
                 //Integrate with your DLL here
                 
@@ -44,10 +47,17 @@ public class StoreState extends Thread{
                 System.out.println("\tState: " + deviceState);
                 System.out.println("\tErrors: " + deviceError);
                 System.out.println("\tEnergy Production: " + deviceEnergyProduction);
+                myGUI.energyProduction =(int) deviceEnergyProduction;
+                myGUI.serialNumber=deviceSerialNumber;
+                myGUI.state=deviceState;
+                
+        
+                //myGUI.error= deviceError;
                 
                 Thread.sleep(5000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(StoreState.class.getName()).log(Level.SEVERE, null, ex);
+                a=false;
             }
         }
     }

@@ -14,7 +14,7 @@ const int buttonPin=2;     //Digital Pin 2.
 const int buttonPin1=3;    //Digital Pin 3. 
 const int ledPin=4;        //Digital Pin 4.
 const int ledPin1=13;      //Digital Pin 13.
-const int potPin=A0;       //Analog Pin 0.
+const int potPin=A5;       //Analog Pin 5.
 
 //Variables
 int buttonState=0;       //state of buttonPin
@@ -117,6 +117,12 @@ void loop(){
   //Answer to error comand
   if(!strcmp(buffer,"error")){
     Serial.println(errorbuffer);
+    clean_buffer();
+  }
+  
+  //Answer to serialNumber command
+    if(!strcmp(buffer,"serialN")){
+    Serial.println(1);
     clean_buffer();
   }
 
