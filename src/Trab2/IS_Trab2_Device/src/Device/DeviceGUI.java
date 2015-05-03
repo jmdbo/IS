@@ -1,6 +1,8 @@
 package Device;
 
 import java.util.Random;
+import org.restlet.Server;
+import org.restlet.data.Protocol;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,6 +25,13 @@ public class DeviceGUI extends javax.swing.JFrame {
     int energyProduction;
 
     public DeviceGUI() {
+        Server_Application teste = new Server_Application();
+        try{
+            new Server(Protocol.HTTP, windmill_server.class).start();
+        }catch(Exception e){
+            e.printStackTrace();
+        
+        }
         initComponents();
     }
 
@@ -203,9 +212,11 @@ public class DeviceGUI extends javax.swing.JFrame {
     }
 
     private void updateValues() {
-        serialNumber = Integer.parseInt(this.jTextFieldSerialNumber.getText());
+        /*serialNumber = Integer.parseInt(this.jTextFieldSerialNumber.getText());
         state = (Integer.parseInt(this.jTextFieldState.getText()) == 1) ? 1 : 0;
         error = Integer.parseInt(this.jTextFieldError.getText());
-        energyProduction = Integer.parseInt(this.jTextFieldEnergyProduction.getText());
+        energyProduction = Integer.parseInt(this.jTextFieldEnergyProduction.getText());*/
+        
+        this.jTextFieldSerialNumber.setText(""+serialNumber);
     }
 }

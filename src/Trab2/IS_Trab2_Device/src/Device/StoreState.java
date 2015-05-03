@@ -7,6 +7,9 @@ package Device;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Hardware.windmill;
+import static java.lang.Boolean.TRUE;
+
 
 /**
  *
@@ -15,37 +18,55 @@ import java.util.logging.Logger;
 public class StoreState extends Thread{
     
     DeviceGUI myGUI;
-
+    private windmill lib;
+    
     public StoreState(DeviceGUI gui) {
-        this.myGUI = gui;
+        this.myGUI = gui;        
+        lib = new windmill();
         this.start();
+    }
+    private static Boolean insertState(int serialNumber, int state, int error, int energyProduction) {
+        webservices.DeviceWebService_Service service = new webservices.DeviceWebService_Service();
+        webservices.DeviceWebService port = service.getDeviceWebServicePort();
+        return port.insertState(serialNumber, state, error, energyProduction);
     }
 
     @Override
     public void run() {
-        while (true) {            
+        Boolean a=true;
+        while (a) {            
             try {
                 //Integrate with your DLL here
-                //Remove the code from here
-                int deviceSerialNumber = this.myGUI.getDeviceSerialNumber();
-                int deviceState = this.myGUI.getDeviceState();
-                int deviceError = this.myGUI.getDeviceMyError();
-                int deviceEnergyProduction = this.myGUI.getDeviceEnergyProduction();
-                //To here (DLL)
                 
+                int deviceSerialNumber = lib.deviceSerialNumber();
+                int deviceState = lib.is_on();
+                int deviceError = Integer.parseInt(lib.errorString());
+                float deviceEnergyProduction = lib.energy_production();
+                //To here (DLL)
+                insertState(deviceSerialNumber,deviceState,deviceError,(int)deviceEnergyProduction);
                 //Integrate with Cloud callig Web Service's Method, using the variables:
                 //deviceSerialNumber, deviceState, deviceError and deviceEnergyProduction   
+                
                 System.out.println("Send Device State");
                 System.out.println("\tSerial Number: " + deviceSerialNumber);
                 System.out.println("\tState: " + deviceState);
                 System.out.println("\tErrors: " + deviceError);
                 System.out.println("\tEnergy Production: " + deviceEnergyProduction);
+                myGUI.energyProduction =(int) deviceEnergyProduction;
+                myGUI.serialNumber=deviceSerialNumber;
+                myGUI.state=deviceState;
+                
+        
+                //myGUI.error= deviceError;
                 
                 Thread.sleep(5000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(StoreState.class.getName()).log(Level.SEVERE, null, ex);
+                a=false;
             }
         }
     }
+
+    
     
 }
