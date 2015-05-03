@@ -212,9 +212,11 @@ public class DeviceGUI extends javax.swing.JFrame {
     }
 
     private void updateValues() {
-        serialNumber = Integer.parseInt(this.jTextFieldSerialNumber.getText());
+        /*serialNumber = Integer.parseInt(this.jTextFieldSerialNumber.getText());
         state = (Integer.parseInt(this.jTextFieldState.getText()) == 1) ? 1 : 0;
         error = Integer.parseInt(this.jTextFieldError.getText());
-        energyProduction = Integer.parseInt(this.jTextFieldEnergyProduction.getText());
+        energyProduction = Integer.parseInt(this.jTextFieldEnergyProduction.getText());*/
+        
+        this.jTextFieldSerialNumber.setText(""+serialNumber);
     }
 }
