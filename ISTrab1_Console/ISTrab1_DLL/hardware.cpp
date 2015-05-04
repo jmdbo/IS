@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define COM "COM2"
+#define COM "COM6"
 
 int state=0;
 Serial* SP=NULL;

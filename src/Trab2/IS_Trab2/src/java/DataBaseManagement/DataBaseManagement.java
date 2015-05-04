@@ -50,6 +50,7 @@ public class DataBaseManagement {
 
             statement.execute("drop table if exists PUBLIC.CUSTOMER;");
             statement.execute("drop table if exists PUBLIC.DEVICE;");
+            statement.execute("drop table if exists PUBLIC.MANUFACTURER;");
             statement.execute("drop table if exists PUBLIC.TYPE;");
             statement.execute("drop table if exists PUBLIC.STATE");
             statement.execute("drop table if exists PUBLIC.ERROR");
@@ -80,6 +81,8 @@ public class DataBaseManagement {
                     + "MODEL VARCHAR(255),"
                     + "FRIENDLY_NAME VARCHAR(255),"
                     + "TYPE_UID INTEGER,"
+                    + "IP VARCHAR(255),"
+                    + "PORT INTEGER,"
                     + "FOREIGN KEY(USER_NAME) REFERENCES CUSTOMER(USER_NAME),"
                     + "FOREIGN KEY(TYPE_UID) REFERENCES TYPE(TYPE_UID));");
 
@@ -138,6 +141,7 @@ public class DataBaseManagement {
         } catch (SQLException ex) {
             Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
+        closeConnection();
         return false;
     }
     
@@ -350,7 +354,7 @@ public class DataBaseManagement {
      Receives the serial SERIAL_NUMBER/STATE/ERROR/ENERGY_PRODUCTION
      Returns a boolean
      */
-    public boolean insertState(int serialNumber, int state, int error, int energyProduction) throws ParseException {
+    public boolean insertState(int serialNumber, int state, int error, int energyProduction,String ip, int port) throws ParseException {
         try {
             openConnection();
             PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO PUBLIC.DEVICE_STATE("
@@ -366,6 +370,13 @@ public class DataBaseManagement {
             preparedStatement.setInt(3, state);
             preparedStatement.setInt(4, error);
             preparedStatement.setInt(5, energyProduction);
+            preparedStatement.execute();
+            closeConnection();
+            openConnection();
+            preparedStatement = this.connection.prepareStatement("UPDATE PUBLIC.DEVICE SET IP=?, PORT=? WHERE SERIAL_NUMBER=?");
+            preparedStatement.setString(1, ip);
+            preparedStatement.setInt(2, port);
+            preparedStatement.setInt(3, serialNumber);
             preparedStatement.execute();
             closeConnection();
             return true;
@@ -460,6 +471,27 @@ public class DataBaseManagement {
         }
         closeConnection();
         return false;
+    }
+    
+    public String getConncectionString(int serialNumber){
+        try{
+            openConnection();
+            ResultSet rs = statement.executeQuery("SELECT IP, PORT FROM PUBLIC.DEVICE WHERE SERIAL_NUMBER = " + Integer.toString(serialNumber) + "");
+            rs.next();
+            String ip = rs.getString(1);
+            int port = rs.getInt(2);
+            String connection = "http://"+ip+":"+Integer.toString(port);
+            closeConnection();
+            return connection;
+            
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(DataBaseManagement.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        closeConnection();
+        return null;
+        
     }
  
 

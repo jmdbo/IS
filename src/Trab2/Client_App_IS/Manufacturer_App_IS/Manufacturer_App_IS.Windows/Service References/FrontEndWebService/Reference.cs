@@ -18,102 +18,69 @@ namespace Manufacturer_App_IS.FrontEndWebService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://WebServices/", ConfigurationName="FrontEndWebService.FrontEndWebService")]
     public interface FrontEndWebService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/loginUserRequest", ReplyAction="http://WebServices/FrontEndWebService/loginUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/getUserHistoryRequest", ReplyAction="http://WebServices/FrontEndWebService/getUserHistoryResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginUserResponse> loginUserAsync(Manufacturer_App_IS.FrontEndWebService.loginUserRequest request);
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserHistoryResponse> getUserHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/getUserDevicesRequest", ReplyAction="http://WebServices/FrontEndWebService/getUserDevicesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/turnDeviceOnRequest", ReplyAction="http://WebServices/FrontEndWebService/turnDeviceOnResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserDevicesResponse> getUserDevicesAsync(Manufacturer_App_IS.FrontEndWebService.getUserDevicesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/createDBRequest", ReplyAction="http://WebServices/FrontEndWebService/createDBResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.createDBResponse> createDBAsync(Manufacturer_App_IS.FrontEndWebService.createDBRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/addDeviceRequest", ReplyAction="http://WebServices/FrontEndWebService/addDeviceResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addDeviceResponse> addDeviceAsync(Manufacturer_App_IS.FrontEndWebService.addDeviceRequest request);
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.turnDeviceOnResponse> turnDeviceOnAsync(Manufacturer_App_IS.FrontEndWebService.turnDeviceOnRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/getDeviceHistoryRequest", ReplyAction="http://WebServices/FrontEndWebService/getDeviceHistoryResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryResponse> getDeviceHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/createDBRequest", ReplyAction="http://WebServices/FrontEndWebService/createDBResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.createDBResponse> createDBAsync(Manufacturer_App_IS.FrontEndWebService.createDBRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/getUserDevicesRequest", ReplyAction="http://WebServices/FrontEndWebService/getUserDevicesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserDevicesResponse> getUserDevicesAsync(Manufacturer_App_IS.FrontEndWebService.getUserDevicesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/loginUserRequest", ReplyAction="http://WebServices/FrontEndWebService/loginUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginUserResponse> loginUserAsync(Manufacturer_App_IS.FrontEndWebService.loginUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/addManufacturerRequest", ReplyAction="http://WebServices/FrontEndWebService/addManufacturerResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addManufacturerResponse> addManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/addDeviceRequest", ReplyAction="http://WebServices/FrontEndWebService/addDeviceResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addDeviceResponse> addDeviceAsync(Manufacturer_App_IS.FrontEndWebService.addDeviceRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/getDeviceTypesRequest", ReplyAction="http://WebServices/FrontEndWebService/getDeviceTypesResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceTypesResponse> getDeviceTypesAsync(Manufacturer_App_IS.FrontEndWebService.getDeviceTypesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/getUserHistoryRequest", ReplyAction="http://WebServices/FrontEndWebService/getUserHistoryResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserHistoryResponse> getUserHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/loginManufacturerRequest", ReplyAction="http://WebServices/FrontEndWebService/loginManufacturerResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginManufacturerResponse> loginManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/addUserRequest", ReplyAction="http://WebServices/FrontEndWebService/addUserResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addUserResponse> addUserAsync(Manufacturer_App_IS.FrontEndWebService.addUserRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/addManufacturerRequest", ReplyAction="http://WebServices/FrontEndWebService/addManufacturerResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/loginManufacturerRequest", ReplyAction="http://WebServices/FrontEndWebService/loginManufacturerResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addManufacturerResponse> addManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest request);
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginManufacturerResponse> loginManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WebServices/FrontEndWebService/turnDeviceOffRequest", ReplyAction="http://WebServices/FrontEndWebService/turnDeviceOffResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.turnDeviceOffResponse> turnDeviceOffAsync(Manufacturer_App_IS.FrontEndWebService.turnDeviceOffRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="loginUser", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class loginUserRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string user;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string passwordHash;
-        
-        public loginUserRequest() {
-        }
-        
-        public loginUserRequest(string user, string passwordHash) {
-            this.user = user;
-            this.passwordHash = passwordHash;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="loginUserResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class loginUserResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public loginUserResponse() {
-        }
-        
-        public loginUserResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserDevices", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class getUserDevicesRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserHistory", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class getUserHistoryRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string userName;
         
-        public getUserDevicesRequest() {
+        public getUserHistoryRequest() {
         }
         
-        public getUserDevicesRequest(string userName) {
+        public getUserHistoryRequest(string userName) {
             this.userName = userName;
         }
     }
@@ -121,17 +88,17 @@ namespace Manufacturer_App_IS.FrontEndWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserDevicesResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class getUserDevicesResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserHistoryResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class getUserHistoryResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string[] @return;
         
-        public getUserDevicesResponse() {
+        public getUserHistoryResponse() {
         }
         
-        public getUserDevicesResponse(string[] @return) {
+        public getUserHistoryResponse(string[] @return) {
             this.@return = @return;
         }
     }
@@ -139,83 +106,35 @@ namespace Manufacturer_App_IS.FrontEndWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createDB", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class createDBRequest {
-        
-        public createDBRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createDBResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class createDBResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public createDBResponse() {
-        }
-        
-        public createDBResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="addDevice", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class addDeviceRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="turnDeviceOn", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class turnDeviceOnRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int serialNumber;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string userName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string model;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string friendlyName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int deviceType;
-        
-        public addDeviceRequest() {
+        public turnDeviceOnRequest() {
         }
         
-        public addDeviceRequest(int serialNumber, string userName, string model, string friendlyName, int deviceType) {
+        public turnDeviceOnRequest(int serialNumber) {
             this.serialNumber = serialNumber;
-            this.userName = userName;
-            this.model = model;
-            this.friendlyName = friendlyName;
-            this.deviceType = deviceType;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="addDeviceResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class addDeviceResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="turnDeviceOnResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class turnDeviceOnResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
+        public int @return;
         
-        public addDeviceResponse() {
+        public turnDeviceOnResponse() {
         }
         
-        public addDeviceResponse(bool @return) {
+        public turnDeviceOnResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -259,160 +178,104 @@ namespace Manufacturer_App_IS.FrontEndWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getDeviceTypes", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class getDeviceTypesRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createDB", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class createDBRequest {
         
-        public getDeviceTypesRequest() {
+        public createDBRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getDeviceTypesResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class getDeviceTypesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string[] @return;
-        
-        public getDeviceTypesResponse() {
-        }
-        
-        public getDeviceTypesResponse(string[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserHistory", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class getUserHistoryRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string userName;
-        
-        public getUserHistoryRequest() {
-        }
-        
-        public getUserHistoryRequest(string userName) {
-            this.userName = userName;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserHistoryResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class getUserHistoryResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string[] @return;
-        
-        public getUserHistoryResponse() {
-        }
-        
-        public getUserHistoryResponse(string[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="loginManufacturer", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class loginManufacturerRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string userName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string hash;
-        
-        public loginManufacturerRequest() {
-        }
-        
-        public loginManufacturerRequest(string userName, string hash) {
-            this.userName = userName;
-            this.hash = hash;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="loginManufacturerResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class loginManufacturerResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public loginManufacturerResponse() {
-        }
-        
-        public loginManufacturerResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="addUser", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class addUserRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string userName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string name;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int telephone;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string residence;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string hash;
-        
-        public addUserRequest() {
-        }
-        
-        public addUserRequest(string userName, string name, int telephone, string residence, string hash) {
-            this.userName = userName;
-            this.name = name;
-            this.telephone = telephone;
-            this.residence = residence;
-            this.hash = hash;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="addUserResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
-    public partial class addUserResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createDBResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class createDBResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public bool @return;
         
-        public addUserResponse() {
+        public createDBResponse() {
         }
         
-        public addUserResponse(bool @return) {
+        public createDBResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserDevices", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class getUserDevicesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string userName;
+        
+        public getUserDevicesRequest() {
+        }
+        
+        public getUserDevicesRequest(string userName) {
+            this.userName = userName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getUserDevicesResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class getUserDevicesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] @return;
+        
+        public getUserDevicesResponse() {
+        }
+        
+        public getUserDevicesResponse(string[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="loginUser", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class loginUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string user;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string passwordHash;
+        
+        public loginUserRequest() {
+        }
+        
+        public loginUserRequest(string user, string passwordHash) {
+            this.user = user;
+            this.passwordHash = passwordHash;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="loginUserResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class loginUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public loginUserResponse() {
+        }
+        
+        public loginUserResponse(bool @return) {
             this.@return = @return;
         }
     }
@@ -478,6 +341,223 @@ namespace Manufacturer_App_IS.FrontEndWebService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addDevice", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class addDeviceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int serialNumber;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string model;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string friendlyName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int deviceType;
+        
+        public addDeviceRequest() {
+        }
+        
+        public addDeviceRequest(int serialNumber, string userName, string model, string friendlyName, int deviceType) {
+            this.serialNumber = serialNumber;
+            this.userName = userName;
+            this.model = model;
+            this.friendlyName = friendlyName;
+            this.deviceType = deviceType;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addDeviceResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class addDeviceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public addDeviceResponse() {
+        }
+        
+        public addDeviceResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getDeviceTypes", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class getDeviceTypesRequest {
+        
+        public getDeviceTypesRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getDeviceTypesResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class getDeviceTypesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] @return;
+        
+        public getDeviceTypesResponse() {
+        }
+        
+        public getDeviceTypesResponse(string[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addUser", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class addUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string name;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int telephone;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string residence;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string hash;
+        
+        public addUserRequest() {
+        }
+        
+        public addUserRequest(string userName, string name, int telephone, string residence, string hash) {
+            this.userName = userName;
+            this.name = name;
+            this.telephone = telephone;
+            this.residence = residence;
+            this.hash = hash;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addUserResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class addUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public addUserResponse() {
+        }
+        
+        public addUserResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="loginManufacturer", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class loginManufacturerRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string hash;
+        
+        public loginManufacturerRequest() {
+        }
+        
+        public loginManufacturerRequest(string userName, string hash) {
+            this.userName = userName;
+            this.hash = hash;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="loginManufacturerResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class loginManufacturerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public loginManufacturerResponse() {
+        }
+        
+        public loginManufacturerResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="turnDeviceOff", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class turnDeviceOffRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int serialNumber;
+        
+        public turnDeviceOffRequest() {
+        }
+        
+        public turnDeviceOffRequest(int serialNumber) {
+            this.serialNumber = serialNumber;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="turnDeviceOffResponse", WrapperNamespace="http://WebServices/", IsWrapped=true)]
+    public partial class turnDeviceOffResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WebServices/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public turnDeviceOffResponse() {
+        }
+        
+        public turnDeviceOffResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface FrontEndWebServiceChannel : Manufacturer_App_IS.FrontEndWebService.FrontEndWebService, System.ServiceModel.IClientChannel {
     }
@@ -522,15 +602,46 @@ namespace Manufacturer_App_IS.FrontEndWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginUserResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.loginUserAsync(Manufacturer_App_IS.FrontEndWebService.loginUserRequest request) {
-            return base.Channel.loginUserAsync(request);
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserHistoryResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.getUserHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest request) {
+            return base.Channel.getUserHistoryAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginUserResponse> loginUserAsync(string user, string passwordHash) {
-            Manufacturer_App_IS.FrontEndWebService.loginUserRequest inValue = new Manufacturer_App_IS.FrontEndWebService.loginUserRequest();
-            inValue.user = user;
-            inValue.passwordHash = passwordHash;
-            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).loginUserAsync(inValue);
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserHistoryResponse> getUserHistoryAsync(string userName) {
+            Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest inValue = new Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest();
+            inValue.userName = userName;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).getUserHistoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.turnDeviceOnResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.turnDeviceOnAsync(Manufacturer_App_IS.FrontEndWebService.turnDeviceOnRequest request) {
+            return base.Channel.turnDeviceOnAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.turnDeviceOnResponse> turnDeviceOnAsync(int serialNumber) {
+            Manufacturer_App_IS.FrontEndWebService.turnDeviceOnRequest inValue = new Manufacturer_App_IS.FrontEndWebService.turnDeviceOnRequest();
+            inValue.serialNumber = serialNumber;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).turnDeviceOnAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.getDeviceHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest request) {
+            return base.Channel.getDeviceHistoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryResponse> getDeviceHistoryAsync(string serialNumber) {
+            Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest inValue = new Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest();
+            inValue.serialNumber = serialNumber;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).getDeviceHistoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.createDBResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.createDBAsync(Manufacturer_App_IS.FrontEndWebService.createDBRequest request) {
+            return base.Channel.createDBAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.createDBResponse> createDBAsync() {
+            Manufacturer_App_IS.FrontEndWebService.createDBRequest inValue = new Manufacturer_App_IS.FrontEndWebService.createDBRequest();
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).createDBAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -545,13 +656,31 @@ namespace Manufacturer_App_IS.FrontEndWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.createDBResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.createDBAsync(Manufacturer_App_IS.FrontEndWebService.createDBRequest request) {
-            return base.Channel.createDBAsync(request);
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginUserResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.loginUserAsync(Manufacturer_App_IS.FrontEndWebService.loginUserRequest request) {
+            return base.Channel.loginUserAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.createDBResponse> createDBAsync() {
-            Manufacturer_App_IS.FrontEndWebService.createDBRequest inValue = new Manufacturer_App_IS.FrontEndWebService.createDBRequest();
-            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).createDBAsync(inValue);
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginUserResponse> loginUserAsync(string user, string passwordHash) {
+            Manufacturer_App_IS.FrontEndWebService.loginUserRequest inValue = new Manufacturer_App_IS.FrontEndWebService.loginUserRequest();
+            inValue.user = user;
+            inValue.passwordHash = passwordHash;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).loginUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addManufacturerResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.addManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest request) {
+            return base.Channel.addManufacturerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addManufacturerResponse> addManufacturerAsync(string UserName, string Name, int Telephone, int Type, string Residence, string Hash) {
+            Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest inValue = new Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest();
+            inValue.UserName = UserName;
+            inValue.Name = Name;
+            inValue.Telephone = Telephone;
+            inValue.Type = Type;
+            inValue.Residence = Residence;
+            inValue.Hash = Hash;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).addManufacturerAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -570,17 +699,6 @@ namespace Manufacturer_App_IS.FrontEndWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.getDeviceHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest request) {
-            return base.Channel.getDeviceHistoryAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryResponse> getDeviceHistoryAsync(string serialNumber) {
-            Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest inValue = new Manufacturer_App_IS.FrontEndWebService.getDeviceHistoryRequest();
-            inValue.serialNumber = serialNumber;
-            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).getDeviceHistoryAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceTypesResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.getDeviceTypesAsync(Manufacturer_App_IS.FrontEndWebService.getDeviceTypesRequest request) {
             return base.Channel.getDeviceTypesAsync(request);
         }
@@ -588,29 +706,6 @@ namespace Manufacturer_App_IS.FrontEndWebService {
         public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getDeviceTypesResponse> getDeviceTypesAsync() {
             Manufacturer_App_IS.FrontEndWebService.getDeviceTypesRequest inValue = new Manufacturer_App_IS.FrontEndWebService.getDeviceTypesRequest();
             return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).getDeviceTypesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserHistoryResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.getUserHistoryAsync(Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest request) {
-            return base.Channel.getUserHistoryAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.getUserHistoryResponse> getUserHistoryAsync(string userName) {
-            Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest inValue = new Manufacturer_App_IS.FrontEndWebService.getUserHistoryRequest();
-            inValue.userName = userName;
-            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).getUserHistoryAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginManufacturerResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.loginManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest request) {
-            return base.Channel.loginManufacturerAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginManufacturerResponse> loginManufacturerAsync(string userName, string hash) {
-            Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest inValue = new Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest();
-            inValue.userName = userName;
-            inValue.hash = hash;
-            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).loginManufacturerAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -629,19 +724,26 @@ namespace Manufacturer_App_IS.FrontEndWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addManufacturerResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.addManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest request) {
-            return base.Channel.addManufacturerAsync(request);
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginManufacturerResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.loginManufacturerAsync(Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest request) {
+            return base.Channel.loginManufacturerAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.addManufacturerResponse> addManufacturerAsync(string UserName, string Name, int Telephone, int Type, string Residence, string Hash) {
-            Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest inValue = new Manufacturer_App_IS.FrontEndWebService.addManufacturerRequest();
-            inValue.UserName = UserName;
-            inValue.Name = Name;
-            inValue.Telephone = Telephone;
-            inValue.Type = Type;
-            inValue.Residence = Residence;
-            inValue.Hash = Hash;
-            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).addManufacturerAsync(inValue);
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.loginManufacturerResponse> loginManufacturerAsync(string userName, string hash) {
+            Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest inValue = new Manufacturer_App_IS.FrontEndWebService.loginManufacturerRequest();
+            inValue.userName = userName;
+            inValue.hash = hash;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).loginManufacturerAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.turnDeviceOffResponse> Manufacturer_App_IS.FrontEndWebService.FrontEndWebService.turnDeviceOffAsync(Manufacturer_App_IS.FrontEndWebService.turnDeviceOffRequest request) {
+            return base.Channel.turnDeviceOffAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Manufacturer_App_IS.FrontEndWebService.turnDeviceOffResponse> turnDeviceOffAsync(int serialNumber) {
+            Manufacturer_App_IS.FrontEndWebService.turnDeviceOffRequest inValue = new Manufacturer_App_IS.FrontEndWebService.turnDeviceOffRequest();
+            inValue.serialNumber = serialNumber;
+            return ((Manufacturer_App_IS.FrontEndWebService.FrontEndWebService)(this)).turnDeviceOffAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

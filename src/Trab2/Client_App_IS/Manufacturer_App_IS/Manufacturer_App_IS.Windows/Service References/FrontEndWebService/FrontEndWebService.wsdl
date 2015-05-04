@@ -5,29 +5,17 @@
       <xsd:import schemaLocation="http://localhost:8080/IS_Trab2/FrontEndWebService?xsd=1" namespace="http://WebServices/" />
     </xsd:schema>
   </types>
-  <message name="loginUser">
-    <part name="parameters" element="tns:loginUser" />
+  <message name="getUserHistory">
+    <part name="parameters" element="tns:getUserHistory" />
   </message>
-  <message name="loginUserResponse">
-    <part name="parameters" element="tns:loginUserResponse" />
+  <message name="getUserHistoryResponse">
+    <part name="parameters" element="tns:getUserHistoryResponse" />
   </message>
-  <message name="getUserDevices">
-    <part name="parameters" element="tns:getUserDevices" />
+  <message name="turnDeviceOn">
+    <part name="parameters" element="tns:turnDeviceOn" />
   </message>
-  <message name="getUserDevicesResponse">
-    <part name="parameters" element="tns:getUserDevicesResponse" />
-  </message>
-  <message name="createDB">
-    <part name="parameters" element="tns:createDB" />
-  </message>
-  <message name="createDBResponse">
-    <part name="parameters" element="tns:createDBResponse" />
-  </message>
-  <message name="addDevice">
-    <part name="parameters" element="tns:addDevice" />
-  </message>
-  <message name="addDeviceResponse">
-    <part name="parameters" element="tns:addDeviceResponse" />
+  <message name="turnDeviceOnResponse">
+    <part name="parameters" element="tns:turnDeviceOnResponse" />
   </message>
   <message name="getDeviceHistory">
     <part name="parameters" element="tns:getDeviceHistory" />
@@ -35,29 +23,23 @@
   <message name="getDeviceHistoryResponse">
     <part name="parameters" element="tns:getDeviceHistoryResponse" />
   </message>
-  <message name="getDeviceTypes">
-    <part name="parameters" element="tns:getDeviceTypes" />
+  <message name="createDB">
+    <part name="parameters" element="tns:createDB" />
   </message>
-  <message name="getDeviceTypesResponse">
-    <part name="parameters" element="tns:getDeviceTypesResponse" />
+  <message name="createDBResponse">
+    <part name="parameters" element="tns:createDBResponse" />
   </message>
-  <message name="getUserHistory">
-    <part name="parameters" element="tns:getUserHistory" />
+  <message name="getUserDevices">
+    <part name="parameters" element="tns:getUserDevices" />
   </message>
-  <message name="getUserHistoryResponse">
-    <part name="parameters" element="tns:getUserHistoryResponse" />
+  <message name="getUserDevicesResponse">
+    <part name="parameters" element="tns:getUserDevicesResponse" />
   </message>
-  <message name="loginManufacturer">
-    <part name="parameters" element="tns:loginManufacturer" />
+  <message name="loginUser">
+    <part name="parameters" element="tns:loginUser" />
   </message>
-  <message name="loginManufacturerResponse">
-    <part name="parameters" element="tns:loginManufacturerResponse" />
-  </message>
-  <message name="addUser">
-    <part name="parameters" element="tns:addUser" />
-  </message>
-  <message name="addUserResponse">
-    <part name="parameters" element="tns:addUserResponse" />
+  <message name="loginUserResponse">
+    <part name="parameters" element="tns:loginUserResponse" />
   </message>
   <message name="addManufacturer">
     <part name="parameters" element="tns:addManufacturer" />
@@ -65,51 +47,89 @@
   <message name="addManufacturerResponse">
     <part name="parameters" element="tns:addManufacturerResponse" />
   </message>
+  <message name="addDevice">
+    <part name="parameters" element="tns:addDevice" />
+  </message>
+  <message name="addDeviceResponse">
+    <part name="parameters" element="tns:addDeviceResponse" />
+  </message>
+  <message name="getDeviceTypes">
+    <part name="parameters" element="tns:getDeviceTypes" />
+  </message>
+  <message name="getDeviceTypesResponse">
+    <part name="parameters" element="tns:getDeviceTypesResponse" />
+  </message>
+  <message name="addUser">
+    <part name="parameters" element="tns:addUser" />
+  </message>
+  <message name="addUserResponse">
+    <part name="parameters" element="tns:addUserResponse" />
+  </message>
+  <message name="loginManufacturer">
+    <part name="parameters" element="tns:loginManufacturer" />
+  </message>
+  <message name="loginManufacturerResponse">
+    <part name="parameters" element="tns:loginManufacturerResponse" />
+  </message>
+  <message name="turnDeviceOff">
+    <part name="parameters" element="tns:turnDeviceOff" />
+  </message>
+  <message name="turnDeviceOffResponse">
+    <part name="parameters" element="tns:turnDeviceOffResponse" />
+  </message>
   <portType name="FrontEndWebService">
-    <operation name="loginUser">
-      <input wsam:Action="http://WebServices/FrontEndWebService/loginUserRequest" message="tns:loginUser" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/loginUserResponse" message="tns:loginUserResponse" />
+    <operation name="getUserHistory">
+      <input wsam:Action="http://WebServices/FrontEndWebService/getUserHistoryRequest" message="tns:getUserHistory" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/getUserHistoryResponse" message="tns:getUserHistoryResponse" />
     </operation>
-    <operation name="getUserDevices">
-      <input wsam:Action="http://WebServices/FrontEndWebService/getUserDevicesRequest" message="tns:getUserDevices" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/getUserDevicesResponse" message="tns:getUserDevicesResponse" />
-    </operation>
-    <operation name="createDB">
-      <input wsam:Action="http://WebServices/FrontEndWebService/createDBRequest" message="tns:createDB" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/createDBResponse" message="tns:createDBResponse" />
-    </operation>
-    <operation name="addDevice">
-      <input wsam:Action="http://WebServices/FrontEndWebService/addDeviceRequest" message="tns:addDevice" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/addDeviceResponse" message="tns:addDeviceResponse" />
+    <operation name="turnDeviceOn">
+      <input wsam:Action="http://WebServices/FrontEndWebService/turnDeviceOnRequest" message="tns:turnDeviceOn" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/turnDeviceOnResponse" message="tns:turnDeviceOnResponse" />
     </operation>
     <operation name="getDeviceHistory">
       <input wsam:Action="http://WebServices/FrontEndWebService/getDeviceHistoryRequest" message="tns:getDeviceHistory" />
       <output wsam:Action="http://WebServices/FrontEndWebService/getDeviceHistoryResponse" message="tns:getDeviceHistoryResponse" />
     </operation>
-    <operation name="getDeviceTypes">
-      <input wsam:Action="http://WebServices/FrontEndWebService/getDeviceTypesRequest" message="tns:getDeviceTypes" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/getDeviceTypesResponse" message="tns:getDeviceTypesResponse" />
+    <operation name="createDB">
+      <input wsam:Action="http://WebServices/FrontEndWebService/createDBRequest" message="tns:createDB" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/createDBResponse" message="tns:createDBResponse" />
     </operation>
-    <operation name="getUserHistory">
-      <input wsam:Action="http://WebServices/FrontEndWebService/getUserHistoryRequest" message="tns:getUserHistory" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/getUserHistoryResponse" message="tns:getUserHistoryResponse" />
+    <operation name="getUserDevices">
+      <input wsam:Action="http://WebServices/FrontEndWebService/getUserDevicesRequest" message="tns:getUserDevices" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/getUserDevicesResponse" message="tns:getUserDevicesResponse" />
     </operation>
-    <operation name="loginManufacturer">
-      <input wsam:Action="http://WebServices/FrontEndWebService/loginManufacturerRequest" message="tns:loginManufacturer" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/loginManufacturerResponse" message="tns:loginManufacturerResponse" />
-    </operation>
-    <operation name="addUser">
-      <input wsam:Action="http://WebServices/FrontEndWebService/addUserRequest" message="tns:addUser" />
-      <output wsam:Action="http://WebServices/FrontEndWebService/addUserResponse" message="tns:addUserResponse" />
+    <operation name="loginUser">
+      <input wsam:Action="http://WebServices/FrontEndWebService/loginUserRequest" message="tns:loginUser" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/loginUserResponse" message="tns:loginUserResponse" />
     </operation>
     <operation name="addManufacturer">
       <input wsam:Action="http://WebServices/FrontEndWebService/addManufacturerRequest" message="tns:addManufacturer" />
       <output wsam:Action="http://WebServices/FrontEndWebService/addManufacturerResponse" message="tns:addManufacturerResponse" />
     </operation>
+    <operation name="addDevice">
+      <input wsam:Action="http://WebServices/FrontEndWebService/addDeviceRequest" message="tns:addDevice" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/addDeviceResponse" message="tns:addDeviceResponse" />
+    </operation>
+    <operation name="getDeviceTypes">
+      <input wsam:Action="http://WebServices/FrontEndWebService/getDeviceTypesRequest" message="tns:getDeviceTypes" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/getDeviceTypesResponse" message="tns:getDeviceTypesResponse" />
+    </operation>
+    <operation name="addUser">
+      <input wsam:Action="http://WebServices/FrontEndWebService/addUserRequest" message="tns:addUser" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/addUserResponse" message="tns:addUserResponse" />
+    </operation>
+    <operation name="loginManufacturer">
+      <input wsam:Action="http://WebServices/FrontEndWebService/loginManufacturerRequest" message="tns:loginManufacturer" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/loginManufacturerResponse" message="tns:loginManufacturerResponse" />
+    </operation>
+    <operation name="turnDeviceOff">
+      <input wsam:Action="http://WebServices/FrontEndWebService/turnDeviceOffRequest" message="tns:turnDeviceOff" />
+      <output wsam:Action="http://WebServices/FrontEndWebService/turnDeviceOffResponse" message="tns:turnDeviceOffResponse" />
+    </operation>
   </portType>
   <binding name="FrontEndWebServicePortBinding" type="tns:FrontEndWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="loginUser">
+    <operation name="getUserHistory">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -118,25 +138,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="getUserDevices">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="createDB">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="addDevice">
+    <operation name="turnDeviceOn">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -154,25 +156,52 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="createDB">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserDevices">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="loginUser">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addManufacturer">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addDevice">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="getDeviceTypes">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="getUserHistory">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="loginManufacturer">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -190,7 +219,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="addManufacturer">
+    <operation name="loginManufacturer">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="turnDeviceOff">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

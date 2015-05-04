@@ -133,8 +133,8 @@
 
                 </Grid>
             </Border>
-            <Button Content="Turn On" HorizontalAlignment="Left" Margin="7,7,0,0" Grid.Row="2" VerticalAlignment="Top" Height="81" Width="188"/>
-            <Button Content="Turn Off" HorizontalAlignment="Right" Margin="0,7,7,0" Grid.Row="2" VerticalAlignment="Top" Width="190" Height="81"/>
+            <Button Content="Turn On" HorizontalAlignment="Left" Margin="7,7,0,0" Grid.Row="2" VerticalAlignment="Top" Height="81" Width="188" Click="Button_Click_2"/>
+            <Button Content="Turn Off" HorizontalAlignment="Right" Margin="0,7,7,0" Grid.Row="2" VerticalAlignment="Top" Width="190" Height="81" Click="Button_Click_1"/>
             <Button Content="Refresh" HorizontalAlignment="Right" Margin="0,7,397,0" Grid.Row="2" VerticalAlignment="Top" Width="190" Height="81" Click="Button_Click"/>
 
         </Grid>

@@ -149,6 +149,9 @@
     <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.addDeviceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.addManufacturerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.addUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -167,7 +170,16 @@
     <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.getUserHistoryResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.loginManufacturerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.loginUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.turnDeviceOffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontEndWebService\Client_App_IS.FrontEndWebService.turnDeviceOnResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FrontEndWebService\FrontEndWebService.wsdl" />

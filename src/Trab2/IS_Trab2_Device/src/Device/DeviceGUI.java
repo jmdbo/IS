@@ -1,6 +1,10 @@
 package Device;
 
+import Hardware.windmill;
 import java.util.Random;
+import org.restlet.Context;
+import org.restlet.Server;
+import org.restlet.data.Protocol;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,8 +25,26 @@ public class DeviceGUI extends javax.swing.JFrame {
     int state;
     int error;
     int energyProduction;
+    windmill hardware;
+    String ip;
+    int portIp;
 
     public DeviceGUI() {
+        hardware = new windmill();
+        //Server_Application teste = new Server_Application(hardware);
+        try{
+            Context contexto = new Context();
+            contexto.getAttributes().put("HARDWARE", hardware);
+            Server server = new Server(contexto,Protocol.HTTP,8092, windmill_server.class);         
+           
+            server.start();
+            ip=server.getAddress();
+            portIp = server.getActualPort();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        
+        }
         initComponents();
     }
 
@@ -203,9 +225,11 @@ public class DeviceGUI extends javax.swing.JFrame {
     }
 
     private void updateValues() {
-        serialNumber = Integer.parseInt(this.jTextFieldSerialNumber.getText());
+        /*serialNumber = Integer.parseInt(this.jTextFieldSerialNumber.getText());
         state = (Integer.parseInt(this.jTextFieldState.getText()) == 1) ? 1 : 0;
         error = Integer.parseInt(this.jTextFieldError.getText());
-        energyProduction = Integer.parseInt(this.jTextFieldEnergyProduction.getText());
+        energyProduction = Integer.parseInt(this.jTextFieldEnergyProduction.getText());*/
+        
+        this.jTextFieldSerialNumber.setText(""+serialNumber);
     }
 }
