@@ -147,10 +147,10 @@ namespace Manufacturer_App_IS
                 deviceSearchCollection.Clear();
                 for (int i = 0; i < (res.@return.Length/4); i++)
                 {
-                    deviceSearchCollection.Add(new DeviceData(res.@return[6 * i],//Time
-                        res.@return[(6 * i) + 1], //State
-                        res.@return[(6 * i) + 2], //Error
-                        res.@return[(6 * i) + 3])); //Energy Production
+                    deviceSearchCollection.Add(new DeviceData(res.@return[4 * i],//Time
+                        res.@return[(4 * i) + 1], //State
+                        res.@return[(4 * i) + 2], //Error
+                        res.@return[(4 * i) + 3])); //Energy Production
                     
                 }
 
