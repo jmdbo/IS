@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/André/Dropbox/Work/Docencia/2014-2015/IS/Trab%20MAS+XML/TRAB_IS/src/XML/myPlaceSchema.xml" uri="xml-resources/jaxb/updateMyPlace/myPlaceSchema.xml.xsd"/>
+</catalog>
