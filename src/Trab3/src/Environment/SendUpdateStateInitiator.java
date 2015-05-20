@@ -31,6 +31,11 @@ public class SendUpdateStateInitiator extends AchieveREInitiator {
 
     public static ACLMessage BuiltMessage(AID receiver, String content) {
         //Aula 2
+        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+        msg.addReceiver(receiver);
+        msg.setContent(content);
+        msg.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
+        return msg;
     }
 
     @Override

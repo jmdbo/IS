@@ -31,5 +31,35 @@ public class UpdateStateResponder extends AchieveREResponder {
     @Override
     protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException, RefuseException {
         //Aula 2 e Aula 3
+        TMyPlace place = null;
+        ACLMessage response;
+        try{
+            place = MessageManagement.retrievePlaceStateObject(request.getContent());
+        }catch(JAXBException ex){
+            Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response = request.createReply();
+        if(place!=null){
+            TMyPlace nextPlace = new TMyPlace();
+            nextPlace.getPlace().add(place.getPlace().get(1));
+            //TODO: Perguntar isto ao Rocha!
+            response.setPerformative(ACLMessage.AGREE);
+            /*******************-Perguntar ao Prof!!!-***********************************/
+            String replyStr = "";
+            try{
+                replyStr = Common.MessageManagement.createPlaceStateContent(nextPlace);
+            }catch(JAXBException ex){
+                Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            response.setContent(replyStr);
+            
+        }else{            
+            //TODO: Perguntar isto ao Rocha!
+            response.setPerformative(ACLMessage.REFUSE);
+            /*******************-Perguntar ao Prof!!!-***********************************/
+            
+        }
+        response.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
+        return response;
     }
 }

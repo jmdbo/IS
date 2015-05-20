@@ -22,6 +22,10 @@ public class KillYourselfInitiator extends AchieveREInitiator {
 
     public static ACLMessage BuiltMessage(AID receiver) {
         //Aula 2
+        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+        msg.addReceiver(receiver);
+        msg.setOntology(Common.Constants.ONTOLOGY_KILL_YOURSELF);
+        return msg;
     }
 
     @Override
