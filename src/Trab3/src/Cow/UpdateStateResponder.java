@@ -54,9 +54,9 @@ public class UpdateStateResponder extends AchieveREResponder {
                         if(!placeList.get(i-1).isWolf() && !placeList.get(i).isWolf() && !placeList.get(i+1).isWolf() && placeList.get(i).getGress()!=0 && !placeList.get(i).isObstacle()){
                             if(placeList.get(i).getGress()>maxGrass){
                                 maxGrass = placeList.get(i).getGress();available.getPlace().clear();
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }else if(maxGrass == placeList.get(i).getGress()){
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }    
                         }
                     }else if(placeList.get(i-1)==null && placeList.get(i+1)!=null && placeList.get(i)!=null){
@@ -64,9 +64,9 @@ public class UpdateStateResponder extends AchieveREResponder {
                             if(placeList.get(i).getGress()>maxGrass){
                                 maxGrass = placeList.get(i).getGress();
                                 available.getPlace().clear();
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }else if(maxGrass == placeList.get(i).getGress()){
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }                 
                         }
 
@@ -75,9 +75,9 @@ public class UpdateStateResponder extends AchieveREResponder {
                             if(placeList.get(i).getGress()>maxGrass){
                                 maxGrass = placeList.get(i).getGress();
                                 available.getPlace().clear();
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }else if(maxGrass == placeList.get(i).getGress()){
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }                
                         }                    
                     }
@@ -87,9 +87,9 @@ public class UpdateStateResponder extends AchieveREResponder {
                             if(placeList.get(i).getGress()>maxGrass){
                                 maxGrass = placeList.get(i).getGress();
                                 available.getPlace().clear();
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }else if(maxGrass == placeList.get(i).getGress()){
-                                available.getPlace().add(0, placeList.get(i));
+                                available.getPlace().add(placeList.get(i));
                             }                
                         }
                     }
@@ -98,10 +98,12 @@ public class UpdateStateResponder extends AchieveREResponder {
             
             if(available.getPlace().isEmpty()){                
                 nextPlace.getPlace().add(placeList.get(0));
-            }else{
+            }else if(available.getPlace().size()!=1){
                 Random r = new Random();
                 i = r.nextInt(available.getPlace().size()-1);
                 nextPlace.getPlace().add(available.getPlace().get(i));
+            }else{
+                nextPlace.getPlace().add(available.getPlace().get(0));
             }
             
             response.setPerformative(ACLMessage.INFORM);
