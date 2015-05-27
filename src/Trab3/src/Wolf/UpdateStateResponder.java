@@ -43,7 +43,7 @@ public class UpdateStateResponder extends AchieveREResponder {
             TMyPlace nextPlace = new TMyPlace();
             nextPlace.getPlace().add(place.getPlace().get(1));
             /******************* Perguntar ao Prof!!! ************************************/
-            response.setPerformative(ACLMessage.AGREE);
+            response.setPerformative(ACLMessage.INFORM);
             /*******************-Perguntar ao Prof!!!-***********************************/
             String replyStr = "";
             try{

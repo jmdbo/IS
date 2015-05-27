@@ -137,9 +137,9 @@ public class UpdateStates extends SequentialBehaviour {
                 myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX][posY + 1]);
                 myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX + 1][posY + 1]);
                 myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX + 1][posY]);
-                myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX + 1][posY + 1]);
-                myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX][posY + 1]);
-                myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX - 1][posY + 1]);
+                myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX + 1][posY - 1]);
+                myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX][posY - 1]);
+                myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX - 1][posY - 1]);
                 myPlace.getPlace().add(((EnvironmentAgent) myAgent).myEnvironment[posX - 1][posY]);
             }
             return myPlace;

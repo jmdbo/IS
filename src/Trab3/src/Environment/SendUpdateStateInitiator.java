@@ -86,13 +86,12 @@ public class SendUpdateStateInitiator extends AchieveREInitiator {
                         }
                     }
                 }
-            } else {
+            } else if(((EnvironmentAgent) myAgent).wolfAgents.containsKey(inform.getSender().getLocalName())){
                 int lastX = ((EnvironmentAgent) myAgent).wolfAgents.get(inform.getSender().getLocalName()).getXx();
                 int lastY = ((EnvironmentAgent) myAgent).wolfAgents.get(inform.getSender().getLocalName()).getYy();
                 if (!(((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isWolf()
-                        && ((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].getGress() > 0)
                         && !((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isObstacle()
-                        && !((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isCow()) {
+                        && !((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isCow())) {
                     ((EnvironmentAgent) myAgent).myEnvironment[lastX][lastY].setEntity(null);
                     ((EnvironmentAgent) myAgent).myEnvironment[lastX][lastY].setWolf(false);
                     ((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].setEntity(inform.getSender().getLocalName());
