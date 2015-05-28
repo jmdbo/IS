@@ -12,27 +12,36 @@ import jade.domain.FIPAAgentManagement.RefuseException;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.proto.AchieveREResponder;
+import java.security.SecureRandom;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
 import org.netbeans.xml.schema.updateschema.TMyPlace;
+import org.netbeans.xml.schema.updateschema.TPlace;
 
 /**
  *
  * @author André
  */
 public class UpdateStateResponder extends AchieveREResponder {
+    
+    private SecureRandom r;
 
     public UpdateStateResponder(Agent a, MessageTemplate mt) {
         super(a, mt);
+        r = new SecureRandom();
     }
 
     @Override
     protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException, RefuseException {
         //Aula 2 e //Aula 3
-                TMyPlace place = null;
+        TMyPlace place = null;
+        int i;
+        
         ACLMessage response;
+        List<TPlace> placeList;
         try{
             place = MessageManagement.retrievePlaceStateObject(request.getContent());
         }catch(JAXBException ex){
@@ -41,12 +50,40 @@ public class UpdateStateResponder extends AchieveREResponder {
         response = request.createReply();
         if(place!=null){
             TMyPlace nextPlace = new TMyPlace();
-            nextPlace.getPlace().add(place.getPlace().get(1));
-            /******************* Perguntar ao Prof!!! ************************************/
+            TMyPlace available = new TMyPlace();
+            Boolean foundCow = false;
+            
+            placeList=place.getPlace();
+            for(i=1; i<placeList.size(); i++){
+                if(placeList.get(i)!=null && placeList.get(i).getPosition()!= null){
+                    if( placeList.get(i).isCow() && !placeList.get(i).isObstacle()){
+                        if(!foundCow){
+                            available.getPlace().clear();                            
+                            foundCow = true;                            
+                        }
+                        available.getPlace().add(placeList.get(i));                        
+                    }else if(!placeList.get(i).isObstacle() && !foundCow ){
+                        available.getPlace().add(placeList.get(i));
+                    }                                                
+                }                
+            }
+            
+            if(available.getPlace().isEmpty()){                
+                nextPlace.getPlace().add(placeList.get(0));
+            }else if(available.getPlace().size()!=1){
+                i = r.nextInt(available.getPlace().size()-1);
+                nextPlace.getPlace().add(available.getPlace().get(i));
+            }else{
+                nextPlace.getPlace().add(available.getPlace().get(0));
+            }
+            
+            
             response.setPerformative(ACLMessage.INFORM);
-            /*******************-Perguntar ao Prof!!!-***********************************/
             String replyStr = "";
             try{
+                if(nextPlace.getPlace().get(0).getPosition()==null){
+                    System.err.println("");
+                }
                 replyStr = Common.MessageManagement.createPlaceStateContent(nextPlace);
             }catch(JAXBException ex){
                 Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
