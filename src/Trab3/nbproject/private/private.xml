@@ -3,27 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/dev/IS/src/Trab3/src/Environment/SendUpdateStateInitiator.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/build/generated-sources/jaxb/org/netbeans/xml/schema/updateschema/ObjectFactory.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Cow/KillYourselfResponder.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/build/generated-sources/jaxb/org/netbeans/xml/schema/updateschema/package-info.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Wolf/WolfAgent.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Environment/EnvironmentAgent.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Wolf/UpdateStateResponder.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/build/generated-sources/jaxb/org/netbeans/xml/schema/updateschema/TPosition.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/XML/myPlaceSchema.xml</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Common/Constants.java</file>
             <file>file:/C:/dev/IS/src/Trab3/src/Environment/UpdateStates.java</file>
             <file>file:/C:/dev/IS/src/Trab3/src/Cow/UpdateStateResponder.java</file>
+            <file>file:/C:/dev/IS/src/Trab3/src/Environment/SendUpdateStateInitiator.java</file>
+            <file>file:/C:/dev/IS/src/Trab3/src/Cow/KillYourselfResponder.java</file>
             <file>file:/C:/dev/IS/src/Trab3/src/Environment/KillYourselfInitiator.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Environment/StartSimulation.java</file>
             <file>file:/C:/dev/IS/src/Trab3/src/Common/MessageManagement.java</file>
             <file>file:/C:/dev/IS/src/Trab3/src/Cow/CowAgent.java</file>
             <file>file:/C:/dev/IS/src/Trab3/build/generated-sources/jaxb/org/netbeans/xml/schema/updateschema/TMyPlace.java</file>
             <file>file:/C:/dev/IS/src/Trab3/build/generated-sources/jaxb/org/netbeans/xml/schema/updateschema/TPlace.java</file>
             <file>file:/C:/dev/IS/src/Trab3/src/Common/DFInteraction.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/src/Console/ConsoleAgent.java</file>
-            <file>file:/C:/dev/IS/src/Trab3/xml-resources/jaxb/updateMyPlace/myPlaceSchema.xml.xsd</file>
+            <file>file:/C:/dev/IS/src/Trab3/src/Wolf/UpdateStateResponder.java</file>
         </group>
     </open-files>
 </project-private>
