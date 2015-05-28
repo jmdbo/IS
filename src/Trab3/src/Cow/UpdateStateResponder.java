@@ -38,6 +38,7 @@ public class UpdateStateResponder extends AchieveREResponder {
     protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException, RefuseException {
         //Aula 2 e Aula 3
         TMyPlace place = null;
+        
         ACLMessage response;
         try{
             place = MessageManagement.retrievePlaceStateObject(request.getContent());
@@ -45,6 +46,26 @@ public class UpdateStateResponder extends AchieveREResponder {
             Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
         }
         response = request.createReply();
+        if(place!=null){
+            response.setPerformative(ACLMessage.AGREE);            
+        }else{
+            response.setPerformative(ACLMessage.REFUSE);
+        }
+        response.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
+        return response;
+        
+    }
+    
+    @Override
+    protected ACLMessage prepareResultNotification(ACLMessage request, ACLMessage response){
+        TMyPlace place = null;
+        ACLMessage reply;
+        try{
+            place = MessageManagement.retrievePlaceStateObject(request.getContent());
+        }catch(JAXBException ex){
+            Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        reply = request.createReply();
         if(place!=null){
             TMyPlace nextPlace = new TMyPlace();
             TMyPlace available = new TMyPlace();
@@ -120,20 +141,21 @@ public class UpdateStateResponder extends AchieveREResponder {
                 nextPlace.getPlace().add(available.getPlace().get(0));
             }
             
-            response.setPerformative(ACLMessage.INFORM);
+            reply.setPerformative(ACLMessage.INFORM);
             String replyStr = "";
             try{
                 replyStr = Common.MessageManagement.createPlaceStateContent(nextPlace);
             }catch(JAXBException ex){
                 Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
             }
-            response.setContent(replyStr);
+            reply.setContent(replyStr);
             
         }else{            
-            response.setPerformative(ACLMessage.REFUSE);
+            reply.setPerformative(ACLMessage.REFUSE);
             
         }
-        response.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
-        return response;
+        reply.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
+        return reply;
+        
     }
 }

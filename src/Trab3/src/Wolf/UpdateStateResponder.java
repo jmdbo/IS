@@ -38,16 +38,35 @@ public class UpdateStateResponder extends AchieveREResponder {
     protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException, RefuseException {
         //Aula 2 e //Aula 3
         TMyPlace place = null;
-        int i;
-        
+               
         ACLMessage response;
-        List<TPlace> placeList;
         try{
             place = MessageManagement.retrievePlaceStateObject(request.getContent());
         }catch(JAXBException ex){
             Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
         }
         response = request.createReply();
+        if(place!=null){
+            response.setPerformative(ACLMessage.AGREE);            
+        }else{
+            response.setPerformative(ACLMessage.REFUSE);
+        }
+        response.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
+        return response;
+    }
+    
+    @Override
+    protected ACLMessage prepareResultNotification(ACLMessage request, ACLMessage response){
+        TMyPlace place = null;
+        int i;        
+        ACLMessage response2;
+        List<TPlace> placeList;
+        try{
+            place = MessageManagement.retrievePlaceStateObject(request.getContent());
+        }catch(JAXBException ex){
+            Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response2 = request.createReply();
         if(place!=null){
             TMyPlace nextPlace = new TMyPlace();
             TMyPlace available = new TMyPlace();
@@ -78,7 +97,7 @@ public class UpdateStateResponder extends AchieveREResponder {
             }
             
             
-            response.setPerformative(ACLMessage.INFORM);
+            response2.setPerformative(ACLMessage.INFORM);
             String replyStr = "";
             try{
                 if(nextPlace.getPlace().get(0).getPosition()==null){
@@ -88,16 +107,14 @@ public class UpdateStateResponder extends AchieveREResponder {
             }catch(JAXBException ex){
                 Logger.getLogger(UpdateStateResponder.class.getName()).log(Level.SEVERE, null, ex);
             }
-            response.setContent(replyStr);
+            response2.setContent(replyStr);
             
-        }else{            
-            //TODO: Perguntar isto ao Rocha!
-            response.setPerformative(ACLMessage.REFUSE);
-            /*******************-Perguntar ao Prof!!!-***********************************/
+        }else{
+            response2.setPerformative(ACLMessage.FAILURE);
             
         }
-        response.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
-        return response;
+        response2.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
+        return response2;
     }
 
 }

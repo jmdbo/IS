@@ -37,9 +37,14 @@ public class SendUpdateStateInitiator extends AchieveREInitiator {
         msg.setOntology(Common.Constants.ONTOLOGY_UPDATE_STATE);
         return msg;
     }
+    @Override
+    protected void handleAgree(ACLMessage agree){
+        System.out.println("Received Message AGREE from:"+agree.getSender().toString());
+    }
 
     @Override
     protected void handleInform(ACLMessage inform) {
+        System.out.println("Received Message INFORM from:"+inform.getSender().toString());
         try {
             TMyPlace myEnvironment = MessageManagement.retrievePlaceStateObject(inform.getContent());
             TPlace myPlace = myEnvironment.getPlace().get(0);
