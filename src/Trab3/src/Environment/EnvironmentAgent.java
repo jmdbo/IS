@@ -38,6 +38,7 @@ public class EnvironmentAgent extends Agent {
     protected HashMap<String, TPosition> wolfAgents = new HashMap<>();
     protected HashMap<String, TPosition> cowAgents = new HashMap<>();
     protected LinkedList<String> pendingUpdate = new LinkedList<>();
+    protected int TTL;
 
     @Override
     protected void setup() {
@@ -50,6 +51,7 @@ public class EnvironmentAgent extends Agent {
             int obstacles = Integer.parseInt((String) this.getArguments()[0]);
             int wolfs = Integer.parseInt((String) this.getArguments()[1]);
             int cows = Integer.parseInt((String) this.getArguments()[2]);
+            TTL = Integer.parseInt((String) this.getArguments()[3]);
             generateEnvironment(obstacles, wolfs, cows);
             /*
              * Start GUI
@@ -136,6 +138,7 @@ public class EnvironmentAgent extends Agent {
             } while (myEnvironment[posX][posY].isObstacle() || myEnvironment[posX][posY].isCow() || myEnvironment[posX][posY].isWolf());
             myEnvironment[posX][posY].setWolf(true);
             myEnvironment[posX][posY].setEntity("Wolf_" + i);
+            myEnvironment[posX][posY].setTtl(TTL);
             launchNewWolfAgent("Wolf_" + i);
             TPosition tPosition = new TPosition();
             tPosition.setXx(posX);

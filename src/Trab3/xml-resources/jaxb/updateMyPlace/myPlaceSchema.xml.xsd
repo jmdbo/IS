@@ -19,6 +19,7 @@
             <xsd:element name="Obstacle" type="xsd:boolean"/>
             <xsd:element name="Entity" type="xsd:string"/>
             <xsd:element name="Position" type="tns:tPosition"/>
+            <xsd:element name="Ttl" type="xsd:int"/>
         </xsd:sequence>
     </xsd:complexType>
     

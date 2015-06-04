@@ -11,6 +11,6 @@ package Console;
  */
 interface frameToAgentCom {
     
-    void startNewEnvironment(int cows, int wolfs, int obstacles);
+    void startNewEnvironment(int cows, int wolfs, int obstacles, int TTL);
     
 }

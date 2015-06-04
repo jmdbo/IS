@@ -28,10 +28,10 @@ public class ConsoleAgent extends Agent implements frameToAgentCom{
     }
 
     @Override
-    public void startNewEnvironment(int cows, int wolfs, int obstacles) {
+    public void startNewEnvironment(int cows, int wolfs, int obstacles, int TTL) {
         try {
             EnvironmentAgent newEnv = new EnvironmentAgent();
-            newEnv.setArguments(new Object[]{""+obstacles, ""+wolfs, ""+cows});
+            newEnv.setArguments(new Object[]{""+obstacles, ""+wolfs, ""+cows, ""+TTL});
             AgentController agent = this.getContainerController().acceptNewAgent("EnvironmentAgent", newEnv);
             agent.start();
         } catch (StaleProxyException ex) {

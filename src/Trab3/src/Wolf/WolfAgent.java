@@ -29,6 +29,7 @@ public class WolfAgent extends Agent{
             Logger.getLogger(WolfAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Aula 1
+        this.addBehaviour(new KillYourselfResponder(this, MessageTemplate.MatchOntology(Constants.ONTOLOGY_KILL_YOURSELF)));
         this.addBehaviour(new UpdateStateResponder(this, MessageTemplate.MatchOntology(Constants.ONTOLOGY_UPDATE_STATE)));
     }
 
