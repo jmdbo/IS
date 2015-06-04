@@ -125,7 +125,8 @@ public class SendUpdateStateInitiator extends AchieveREInitiator {
                     if (((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isObstacle()) {
                         //não faz nada
                     }
-                    if (((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isCow()) {
+                    if (((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].isCow()
+                            && ((EnvironmentAgent)myAgent).myEnvironment[lastX][lastY].getTtl()!=0) {
                         String lastEntity = ((EnvironmentAgent) myAgent).myEnvironment[myPlace.getPosition().getXx()][myPlace.getPosition().getYy()].getEntity();
                         DFAgentDescription[] SearchByName = DFInteraction.SearchInDFbyName(lastEntity, myAgent);
                         if (SearchByName.length != 0) {
