@@ -171,7 +171,7 @@ namespace Client_App_IS
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(UserPage));
+            this.Frame.Navigate(typeof(RegisterPage));
         }
     }
 }

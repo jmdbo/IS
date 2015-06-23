@@ -26,7 +26,6 @@ public class KillYourselfResponder extends AchieveREResponder{
     protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException, RefuseException {
         //Aula 2
         ACLMessage reply = request.createReply();
-        //TODO: Perguntar isto ao Rocha!
         reply.setPerformative(ACLMessage.AGREE);
         reply.setOntology(Common.Constants.ONTOLOGY_KILL_YOURSELF);
         return reply;

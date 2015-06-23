@@ -111,7 +111,7 @@ public class SendUpdateStateInitiator extends AchieveREInitiator {
                     ((EnvironmentAgent) myAgent).wolfAgents.get(inform.getSender().getLocalName()).setYy(myPlace.getPosition().getYy());
                 } else {
                     if(((EnvironmentAgent)myAgent).myEnvironment[lastX][lastY].getTtl()==0){
-                        ((EnvironmentAgent) myAgent).addBehaviour(new KillYourselfInitiator(myAgent, KillYourselfInitiator.BuiltMessage(inform.getSender())));
+                        ((EnvironmentAgent) myAgent).addBehaviour(new RemoveWolfInitiator(myAgent, KillYourselfInitiator.BuiltMessage(inform.getSender())));
                         ((EnvironmentAgent) myAgent).myEnvironment[lastX][lastY].setEntity(null);
                         ((EnvironmentAgent) myAgent).myEnvironment[lastX][lastY].setWolf(false);
                         ((EnvironmentAgent) myAgent).wolfAgents.remove(inform.getSender().getLocalName());                        
